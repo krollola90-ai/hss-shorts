@@ -1,0 +1,3 @@
+data/
+*.local.csv
+.env

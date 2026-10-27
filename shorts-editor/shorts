@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# shorts-editor CLI. Run from anywhere: shorts-editor/shorts <command> <project> [...]
+#   new <name> <raw_video>      create projects/<name>/ and register the raw footage
+#   transcribe <name> [lang]    Scribe (or Whisper fallback) -> work/words.json
+#   cuts <name>                 plan cut points -> work/cuts.json (uses overrides.json if present)
+#   cut <name> [--preview]      FFmpeg talking-head cut -> work/cut.mp4
+#   build <name>                edit_plan.json -> hf/index.html (HyperFrames project)
+#   check <name>                hyperframes check + contact sheet
+#   preview <name>              low-res draft render -> work/preview.mp4
+#   render <name>               full render + loudness + QC -> footage/edited/<name>.mp4
+#   all <name>                  cuts + cut + build + check + render (after the plan is approved)
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+S="$HERE/scripts"
+cmd="${1:-}"; name="${2:-}"
+[ -z "$cmd" ] && { sed -n '2,12p' "$0"; exit 1; }
+P="$HERE/projects/$name"
+raw() { python3 -c "import json;print(json.load(open('$P/project.json'))['raw'])"; }
+
+case "$cmd" in
+  new)
+    src="$3"; mkdir -p "$P/work" "$P/broll" "$HERE/footage/raw"
+    dst="$HERE/footage/raw/$(basename "$src")"
+    if [ "$(realpath "$src")" != "$(realpath -m "$dst")" ]; then cp --update=none "$src" "$dst"; fi
+    printf '{"name": "%s", "raw": "%s"}\n' "$name" "footage/raw/$(basename "$src")" > "$P/project.json"
+    echo "project -> $P" ;;
+  transcribe)
+    lang="${3:-}"; python3 "$S/transcribe.py" "$HERE/$(raw)" "$P/work/words.json" ${lang:+--language "$lang"} ;;
+  cuts)
+    ov=(); [ -f "$P/overrides.json" ] && ov=(--overrides "$P/overrides.json")
+    python3 "$S/plan_cuts.py" "$P/work/words.json" "$P/work/cuts.json" "${ov[@]}" ;;
+  cut)
+    python3 "$S/cut.py" "$HERE/$(raw)" "$P/work/cuts.json" "$P/work/cut.mp4" "${@:3}" ;;
+  build)
+    python3 "$S/build_comp.py" "$P" ;;
+  check)
+    (cd "$P/hf" && hyperframes check --json > "$P/work/check.json" || true
+     python3 -c "import json;d=json.load(open('$P/work/check.json'));print('check ok' if d.get('ok') else json.dumps(d.get('findings',[])[:20],indent=1))"
+     rm -rf .hyperframes/artifacts/snapshots
+     hyperframes snapshot --json > "$P/work/snapshot.json" && ls .hyperframes/artifacts/snapshots/*/contact-sheet.jpg) ;;
+  preview)
+    (cd "$P/hf" && hyperframes render -o "$P/work/preview.mp4" --quality draft --quiet) ;;
+  render)
+    (cd "$P/hf" && hyperframes render -o "$P/work/render.mp4" --quiet)
+    mkdir -p "$HERE/footage/edited"
+    python3 "$S/finalize.py" "$P/work/render.mp4" "$HERE/footage/edited/$name.mp4" --qc "$P/work/qc.json" ;;
+  all)
+    "$0" cuts "$name" && "$0" cut "$name" && "$0" build "$name" && "$0" check "$name" && "$0" render "$name" ;;
+  *) echo "unknown command: $cmd"; exit 1 ;;
+esac
