@@ -1,0 +1,14 @@
+{
+  "hook": {"text": "РОБОТА В БИДГОЩІ\n5200 ZŁ БРУТТО", "start": 0.05, "end": 2.3, "sfx": "bass-drop-1"},
+  "overlays": [
+    {"type": "card", "start": 5.1, "end": 6.85, "title": "Склад інтернет-замовлень", "body": "Бидгощ", "sfx": "whoosh-medium"},
+    {"type": "list", "start": 7.2, "end": 11.3, "title": "Кого шукаємо:", "items": [["Жінки та чоловіки", 7.75], ["Вік 18–55 років", 9.45]], "sfx": "whoosh-short"},
+    {"type": "card", "start": 11.65, "end": 13.35, "title": "Umowa o pracę", "body": "Офіційний трудовий договір", "sfx": "pop"},
+    {"type": "stat", "start": 15.0, "end": 17.6, "text": "5200 zł", "sub": "брутто на місяць", "sfx": "bass-drop-2"},
+    {"type": "stat", "start": 21.0, "end": 23.3, "text": "400 zł", "sub": "житло на місяць", "sfx": "pop"},
+    {"type": "list", "start": 24.35, "end": 30.4, "title": "Гарантуємо:", "items": [["Регулярні виходи", 24.95], ["Безкоштовний транспорт", 26.55], ["Обіди за 1 zł", 28.65]], "sfx": "whoosh-short"},
+    {"type": "card", "start": 32.7, "end": 35.7, "title": "Уся контактна інформація", "body": "у шапці профілю", "sfx": "whoosh-medium"}
+  ],
+  "music": null,
+  "captions": {"enabled": true, "emphasis": [31, 46, 84, 86, 104]}
+}

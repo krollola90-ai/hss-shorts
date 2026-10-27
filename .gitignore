@@ -1,3 +1,7 @@
 data/
 *.local.csv
 .env
+
+# raw phone footage is too big for git (no LFS from the cloud); keep it on Google Drive
+shorts-editor/footage/raw/*
+!shorts-editor/footage/raw/.gitkeep

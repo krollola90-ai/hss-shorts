@@ -74,8 +74,14 @@ def caption_groups(words, n, max_gap):
             continue
         if cur and (len(cur) >= n or w["start"] - cur[-1]["end"] > max_gap
                     or re.search(r"[.!?…,;:]$", cur[-1]["text"])):
+            # a one/two-letter word (у, в, з, o, і, to…) never hangs at the end of a line:
+            # it moves down to start the next group together with the word it belongs to
+            carry = []
+            if (len(cur) > 1 and len(cur[-1]["text"]) <= 2 and not re.search(r"[.!?…,;:]$", cur[-1]["text"])
+                    and w["start"] - cur[-1]["end"] <= max_gap):
+                carry = [cur.pop()]
             groups.append(cur)
-            cur = []
+            cur = carry
         cur.append(w)
     if cur:
         groups.append(cur)
@@ -235,7 +241,7 @@ border:3px solid var(--glass-border);box-shadow:0 40px 100px rgba(0,0,0,.55);bac
 #captions{position:absolute;left:0;right:0;bottom:%(cap_bottom)dpx;z-index:20;height:0}
 .cg{position:absolute;left:0;right:0;bottom:0;text-align:center;padding:0 70px;font-weight:%(cap_weight)d;
 line-height:1.08;letter-spacing:-0.01em;%(cap_case)s}
-.cw{display:inline-block;margin:0 .2em;color:var(--cap-idle);text-shadow:%(cap_shadow)s;
+.cw{display:inline-block;margin:0 .14em;padding:0 .1em;border-radius:14px;color:var(--cap-idle);text-shadow:%(cap_shadow)s;
 -webkit-text-stroke:3px rgba(0,0,0,.55);paint-order:stroke fill}
 """
 
@@ -339,17 +345,21 @@ def main():
             spans = "".join(f'<span id="w{w["i"]}" class="cw">{esc(w["text"])}</span>' for w in g)
             cap_html.append(f'<div id="cg{g_i}" class="clip cg" data-start="{g0:.3f}" '
                             f'data-duration="{g1 - g0:.3f}" style="font-size:{fs}px">'
-                            + (f'<span class="box">{spans}</span>' if ccfg.get("box") else spans) + '</div>')
-            js.append(f'tl.set("#cg{g_i}",{{opacity:1,visibility:"visible"}},{g0:.3f});')
+                            + '<div class="cgi">' + (f'<span class="box">{spans}</span>' if ccfg.get("box") else spans) + '</div></div>')
+            js.append(f'tl.set("#cg{g_i} .cgi",{{opacity:1}},{g0:.3f});')
             js.append(f'tl.fromTo("#cg{g_i} .cw",{{y:18,opacity:0}},{{y:0,opacity:1,duration:0.1,'
                       f'stagger:0.03,ease:"power2.out"}},{g0:.3f});')
             # hard kill so a stale group never lingers under the next one
-            js.append(f'tl.set("#cg{g_i}",{{opacity:0,visibility:"hidden"}},{g1:.3f});')
+            js.append(f'tl.set("#cg{g_i} .cgi",{{opacity:0}},{g1 - 0.001:.3f});')
             for w in g:
+                if w["i"] in emph and ccfg.get("emphasis_style") == "plate":
+                    js.append(f'tl.to("#w{w["i"]}",{{color:"var(--accent-ink)",backgroundColor:"var(--accent)",'
+                              f'textShadow:"none",webkitTextStroke:"0px rgba(0,0,0,0)",duration:0.08,overwrite:"auto"}},{w["start"]:.3f});')
+                    continue
                 big = ccfg["active_scale"] * (1.1 if w["i"] in emph else 1.0)
-                js.append(f'tl.to("#w{w["i"]}",{{color:"var(--accent)",scale:{big:.2f},duration:0.06}},{w["start"]:.3f});')
+                js.append(f'tl.to("#w{w["i"]}",{{color:"var(--accent)",scale:{big:.2f},duration:0.06,overwrite:"auto"}},{w["start"]:.3f});')
                 if w["i"] not in emph:
-                    js.append(f'tl.to("#w{w["i"]}",{{color:"var(--ink)",scale:1,duration:0.06}},{w["end"]:.3f});')
+                    js.append(f'tl.to("#w{w["i"]}",{{color:"var(--ink)",scale:1,duration:0.06,overwrite:"auto"}},{w["end"]:.3f});')
 
     # ---- audio
     for n, (t, key, meta, db) in enumerate(cues):

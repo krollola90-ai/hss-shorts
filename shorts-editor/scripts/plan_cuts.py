@@ -6,7 +6,8 @@ usage: plan_cuts.py <words.json> <cuts.json> [--overrides overrides.json]
 Drops: fillers, audio events, stutters/repeated n-grams, retakes (a sentence restarted
 with the same opening), isolated soft fillers, pauses > theme.cuts.max_pause.
 overrides.json lets the editor correct decisions by word index:
-  {"drop": [[12, 18]], "keep": [[40, 40]], "trim_start": 0.0, "trim_end": null}
+  {"drop": [[12, 18]], "keep": [[40, 40]], "trim_start": 0.0, "trim_end": null,
+   "order": [[30, 45], [0, 29], [46, 80]]}   # optional: story order of fragments
 Ranges are inclusive word indices. "keep" wins over every automatic rule.
 """
 import argparse
@@ -98,6 +99,17 @@ def main():
     if not kept:
         raise SystemExit("nothing left after cutting")
 
+    # "order": optional list of inclusive word-index ranges giving the story order.
+    # Runs are re-sequenced by block (logical reordering of fragments); words outside
+    # every block stay attached to the block that precedes them in the source.
+    order = [tuple(r) for r in ov.get("order", [])]
+
+    def block_of(i):
+        for k, (a0, a1) in enumerate(order):
+            if a0 <= i <= a1:
+                return k
+        return None
+
     # Group kept words into runs; split a run where the pause exceeds max_pause
     # or where a dropped token sits between two kept words.
     dropped_spans = sorted((w["start"], w["end"]) for w in words if w["i"] in drop)
@@ -105,7 +117,8 @@ def main():
     for prev, w in zip(kept, kept[1:]):
         gap = w["start"] - prev["end"]
         between = any(prev["end"] - 1e-3 <= s and e <= w["start"] + 1e-3 for s, e in dropped_spans)
-        if gap > cfg["max_pause"] or between or w["i"] != prev["i"] + 1 and gap > 0.05:
+        if (gap > cfg["max_pause"] or between or w["i"] != prev["i"] + 1 and gap > 0.05
+                or block_of(w["i"]) != block_of(prev["i"])):
             runs.append(cur)
             cur = [w]
         else:
@@ -126,9 +139,20 @@ def main():
         ceil = min(nxt + nxt_kept + [t1])
         return min(e, ceil)
 
+    if order:
+        keyed, last = [], -1
+        for n, run in enumerate(runs):
+            b = block_of(run[0]["i"])
+            last = b if b is not None else last
+            keyed.append((last, n, run))
+        runs = [r for _, _, r in sorted(keyed, key=lambda x: (x[0], x[1]))]
+
     segments, out_t, words_out = [], 0.0, []
     for run in runs:
         s, e = clamp_lead(run), clamp_tail(run)
+        # snap to the 30 fps frame grid so each cut piece is a whole number of frames and
+        # the edited timeline (captions, cards) never drifts against the rendered video
+        s, e = round(s * 30) / 30, round(e * 30) / 30
         if e - s < 0.08:
             continue
         for w in run:

@@ -25,25 +25,29 @@ def main():
     # Scale-to-cover then centre-crop, so any phone aspect lands on exactly 1080x1920.
     fit = (f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
            f"setsar=1,fps={FPS}")
-    parts, labels = [], []
+    # One short encode per segment (input-seeked), then a stream-copy concat. Memory stays
+    # flat however many segments there are; the trim+concat filtergraph buffered every
+    # segment of a long 4K source and got OOM-killed.
+    q = ["-preset", "ultrafast", "-crf", "30"] if a.preview else ["-preset", "medium", "-crf", "17"]
+    tmp = Path(a.out).with_suffix(".parts")
+    tmp.mkdir(exist_ok=True)
+    files = []
     for k, s in enumerate(segs):
         d = s["src_end"] - s["src_start"]
-        parts.append(f"[0:v]trim=start={s['src_start']}:end={s['src_end']},"
-                     f"setpts=PTS-STARTPTS,{fit}[v{k}]")
-        parts.append(f"[0:a]atrim=start={s['src_start']}:end={s['src_end']},"
-                     f"asetpts=PTS-STARTPTS,aresample=48000,"
-                     f"afade=t=in:d={xf},afade=t=out:st={max(d - xf, 0):.3f}:d={xf}[a{k}]")
-        labels.append(f"[v{k}][a{k}]")
-    parts.append(f"{''.join(labels)}concat=n={len(segs)}:v=1:a=1[v][a]")
-    graph = Path(a.out).with_suffix(".filtergraph.txt")
-    graph.write_text(";\n".join(parts), encoding="utf-8")
-
-    q = ["-preset", "ultrafast", "-crf", "30"] if a.preview else ["-preset", "medium", "-crf", "17"]
-    run(["ffmpeg", "-y", "-v", "error", "-i", a.raw,
-         "-filter_complex_script", graph, "-map", "[v]", "-map", "[a]",
-         "-c:v", "libx264", *q, "-pix_fmt", "yuv420p", "-g", str(FPS), "-keyint_min", str(FPS),
-         "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", a.out])
-    graph.unlink(missing_ok=True)
+        f = tmp / f"p{k:03d}.mp4"
+        run(["ffmpeg", "-y", "-v", "error", "-ss", f"{s['src_start']:.3f}", "-i", a.raw, "-t", f"{d:.3f}",
+             "-vf", fit, "-af", f"aresample=48000,afade=t=in:d={xf},afade=t=out:st={max(d - xf, 0):.3f}:d={xf}",
+             "-c:v", "libx264", *q, "-pix_fmt", "yuv420p", "-g", str(FPS), "-keyint_min", str(FPS),
+             "-c:a", "aac", "-b:a", "192k", "-ar", "48000", f])
+        files.append(f)
+    lst = tmp / "list.txt"
+    lst.write_text("".join(f"file '{f.name}'\n" for f in files))
+    run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", lst,
+         "-c", "copy", "-movflags", "+faststart", a.out])
+    for f in files:
+        f.unlink()
+    lst.unlink()
+    tmp.rmdir()
     log(f"cut -> {a.out}")
 
 

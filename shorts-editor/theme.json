@@ -27,8 +27,9 @@
     "uppercase": true,
     "bottom_px": 640,
     "stroke": "0 6px 24px rgba(0,0,0,0.65)",
-    "active_scale": 1.08,
-    "idle_color": "rgba(255,255,255,0.55)"
+    "active_scale": 1.0,
+    "idle_color": "rgba(255,255,255,0.55)",
+    "emphasis_style": "plate"
   },
   "zoom": {
     "auto": true,
