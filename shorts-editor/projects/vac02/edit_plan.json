@@ -1,0 +1,13 @@
+{
+  "hook": {"text": "РОБОТА В ЛОДЗІ\n5200 ZŁ БРУТТО", "start": 0.05, "end": 2.9, "sfx": "bass-drop-1"},
+  "overlays": [
+    {"type": "card", "start": 5.4, "end": 11.25, "title": "Склад інтернет-замовлень", "body": "Głuchów, ul. Inwestycyjna 1", "sfx": "whoosh-medium"},
+    {"type": "stat", "start": 13.2, "end": 15.8, "text": "5200 zł", "sub": "брутто на місяць", "sfx": "bass-drop-2"},
+    {"type": "list", "start": 16.1, "end": 20.0, "title": "+ Премії:", "items": [["За продуктивність", 17.6], ["За якість роботи", 18.85]], "sfx": "whoosh-short"},
+    {"type": "list", "start": 21.3, "end": 26.75, "title": "Гарантуємо:", "items": [["Регулярні виходи", 22.2], ["Umowa o pracę", 23.8], ["Безкоштовний транспорт", 25.0]], "sfx": "whoosh-short"},
+    {"type": "stat", "start": 27.1, "end": 30.5, "text": "400 zł", "sub": "житло на місяць", "sfx": "pop"},
+    {"type": "card", "start": 32.6, "end": 35.7, "title": "Уся контактна інформація", "body": "у шапці профілю", "sfx": "whoosh-medium"}
+  ],
+  "music": null,
+  "captions": {"enabled": true, "emphasis": [62, 52]}
+}
