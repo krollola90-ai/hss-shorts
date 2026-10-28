@@ -16,6 +16,11 @@ cmd="${1:-}"; name="${2:-}"
 [ -z "$cmd" ] && { sed -n '2,12p' "$0"; exit 1; }
 P="$HERE/projects/$name"
 raw() { python3 -c "import json;print(json.load(open('$P/project.json'))['raw'])"; }
+# a project may pin its own style: project.json -> "theme": "themes/<name>.json"
+if [ -z "${SHORTS_THEME:-}" ] && [ -f "$P/project.json" ]; then
+  th="$(python3 -c "import json;print(json.load(open('$P/project.json')).get('theme',''))")"
+  [ -n "$th" ] && export SHORTS_THEME="$HERE/$th"
+fi
 
 case "$cmd" in
   new)

@@ -24,7 +24,10 @@ def loudnorm(src, dst, lufs, tp):
     af = (f"loudnorm=I={lufs}:TP={tp}:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
           f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:"
           f"offset={m['target_offset']}:linear=true")
-    run(["ffmpeg", "-y", "-v", "error", "-i", src, "-c:v", "copy", "-af", af,
+    # trim audio to the video length: the render's audio can run ~0.1 s past the last frame
+    vdur = float(run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                      "stream=duration", "-of", "csv=p=0", src], capture=True, quiet=True).stdout.strip())
+    run(["ffmpeg", "-y", "-v", "error", "-i", src, "-t", f"{vdur:.3f}", "-c:v", "copy", "-af", af,
          "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", dst])
 
 
