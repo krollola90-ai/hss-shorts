@@ -1,0 +1,63 @@
+{
+  "name": "v3-green-calm",
+  "font_family": "Inter",
+  "colors": {
+    "ink": "#FFFFFF",
+    "ink_dim": "rgba(255,255,255,0.72)",
+    "accent": "#4ADE80",
+    "accent_ink": "#052E16",
+    "glass": "rgba(10,10,12,0.80)",
+    "glass_border": "rgba(255,255,255,0.14)",
+    "scrim": "rgba(0,0,0,0.55)",
+    "stat": "#FFFFFF"
+  },
+  "radius": 36,
+  "safe": {
+    "top": 168,
+    "bottom": 1330,
+    "side": 54,
+    "right_rail": 140
+  },
+  "captions": {
+    "words_per_group": 3,
+    "max_group_gap": 0.15,
+    "font_size": 80,
+    "min_font_size": 66,
+    "weight": 800,
+    "uppercase": false,
+    "bottom_px": 640,
+    "stroke": "0 6px 24px rgba(0,0,0,0.65)",
+    "active_scale": 1.0,
+    "idle_color": "rgba(255,255,255,0.85)",
+    "emphasis_style": "plate"
+  },
+  "zoom": {
+    "auto": true,
+    "min_interval": 3.5,
+    "max_interval": 5.5,
+    "scales": [
+      1.08,
+      1.12
+    ],
+    "in_duration": 0.18
+  },
+  "audio": {
+    "voice_lufs": -14,
+    "true_peak": -1.0,
+    "music_db": -22,
+    "music_duck_db": -6,
+    "sfx_db": -9
+  },
+  "cuts": {
+    "max_pause": 0.45,
+    "keep_lead": 0.06,
+    "keep_tail": 0.14,
+    "crossfade": 0.012
+  },
+  "hook": {
+    "bg": "rgba(10,10,12,0.80)",
+    "ink": "#FFFFFF",
+    "alt_bg": "#4ADE80",
+    "alt_ink": "#052E16"
+  }
+}
