@@ -1,0 +1,28 @@
+{
+  "status": "approved",
+  "title": "Вакансия",
+  "theme": "themes/a-white-minimal-fast.json",
+  "alt_themes": [
+    "themes/v1-yellow-classic.json",
+    "themes/v2-blue-fast.json",
+    "themes/v3-green-calm.json"
+  ],
+  "target_seconds": [
+    30,
+    60
+  ],
+  "aspect": "9:16",
+  "structure": [
+    "хук: город/проект + ставка",
+    "что за работа и где",
+    "кого ищем",
+    "график",
+    "зарплата (stat)",
+    "условия: жильё, транспорт, договор (list)",
+    "срочность, если есть",
+    "концовка"
+  ],
+  "overlays": "stat для денег, list для условий, card для локации и концовки; тёмные карточки; лицо не закрывать",
+  "music": null,
+  "ending": "Уся контактна інформація у профілі (на языке видео)"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "draft",
+  "title": "Идея",
+  "theme": "themes/v1-yellow-classic.json",
+  "target_seconds": [
+    30,
+    90
+  ],
+  "aspect": "9:16",
+  "structure": [
+    "хук: проблема или обещание",
+    "идея",
+    "2–4 тезиса (badge/list)",
+    "вывод"
+  ],
+  "overlays": "badge на каждый тезис, list для перечислений",
+  "music": "upbeat",
+  "ending": "вопрос к зрителю"
+}
