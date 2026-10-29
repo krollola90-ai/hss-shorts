@@ -409,6 +409,18 @@ def main():
                                   ".cg{display:flex;justify-content:center}"
                                   ".cg>.box{display:inline-block;background:%s;border-radius:22px;padding:10px 26px}"
                                   % ccfg["box"]) if ccfg.get("box") else "", **c)
+    # per-video layout tweaks (edit_plan.json -> "layout"), for framings where the face sits high:
+    #   overlay_top: y of top cards (default 230), card_scale: shrink cards/lists (default 1)
+    lay = plan.get("layout") or {}
+    layout_css = ""
+    if lay.get("overlay_top"):
+        layout_css += f".pos-top{{top:{int(lay['overlay_top'])}px}}#hook{{top:{int(lay['overlay_top']) + 20}px}}"
+    if lay.get("card_scale"):
+        k = float(lay["card_scale"])
+        layout_css += (f".card{{padding:{int(44*k)}px {int(48*k)}px;width:{int(960*k)}px}}"
+                       f".card-title{{font-size:{int(64*k)}px}}.card-body{{font-size:{int(44*k)}px}}"
+                       f".list{{margin-top:{int(22*k)}px}}.list li{{font-size:{int(50*k)}px;margin:{int(14*k)}px 0}}"
+                       f".list .dot{{width:{int(70*k)}px;height:{int(70*k)}px;font-size:{int(40*k)}px}}")
     doc = f"""<!doctype html>
 <html lang="{cuts.get('language', 'en')}">
 <head>
@@ -418,6 +430,7 @@ def main():
 <style>
 {fonts_css()}
 {css}
+{layout_css}
 </style>
 </head>
 <body>

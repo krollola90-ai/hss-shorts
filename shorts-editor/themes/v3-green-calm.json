@@ -22,7 +22,7 @@
     "words_per_group": 3,
     "max_group_gap": 0.15,
     "font_size": 80,
-    "min_font_size": 66,
+    "min_font_size": 72,
     "weight": 800,
     "uppercase": false,
     "bottom_px": 640,
