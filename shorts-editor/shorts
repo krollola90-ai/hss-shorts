@@ -54,10 +54,14 @@ case "$cmd" in
     "$0" new "$name" "$HERE/footage/raw/$name.$ext" "${4:-vacancy}" ;;
   import-scribe)
     # shorts import-scribe <name> <scribe_words.json> [lang]  (transcript from the ElevenLabs connector)
-    python3 "$S/transcribe.py" "$P/work/audio.mp3" "$P/work/words.json" --import-scribe "$3" ${4:+--language "$4"} ;;
+    python3 "$S/transcribe.py" "$P/work/audio.mp3" "$P/work/words.json" --import-scribe "$3" ${4:+--language "$4"}
+    cp "$P/work/words.json" "$P/transcript.json" ;;
   transcribe)
-    lang="${3:-}"; python3 "$S/transcribe.py" "$HERE/$(raw)" "$P/work/words.json" ${lang:+--language "$lang"} ;;
+    lang="${3:-}"; python3 "$S/transcribe.py" "$HERE/$(raw)" "$P/work/words.json" ${lang:+--language "$lang"}
+    cp "$P/work/words.json" "$P/transcript.json" ;;
   cuts)
+    # transcript.json is kept in git so a re-edit in a new session never pays for transcription twice
+    [ -f "$P/work/words.json" ] || { mkdir -p "$P/work"; cp "$P/transcript.json" "$P/work/words.json"; }
     ov=(); [ -f "$P/overrides.json" ] && ov=(--overrides "$P/overrides.json")
     python3 "$S/plan_cuts.py" "$P/work/words.json" "$P/work/cuts.json" "${ov[@]}" ;;
   cut)

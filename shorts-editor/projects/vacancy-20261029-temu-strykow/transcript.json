@@ -1,0 +1,2047 @@
+{
+  "engine": "scribe",
+  "language": "uk",
+  "duration": 145.406,
+  "words": [
+    {
+      "text": "Значить",
+      "start": 2.98,
+      "end": 3.3,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 0
+    },
+    {
+      "text": "так.",
+      "start": 3.34,
+      "end": 3.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 1
+    },
+    {
+      "text": "Усім",
+      "start": 3.98,
+      "end": 4.24,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 2
+    },
+    {
+      "text": "привіт!",
+      "start": 4.28,
+      "end": 4.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 3
+    },
+    {
+      "text": "Хто",
+      "start": 5.04,
+      "end": 5.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 4
+    },
+    {
+      "text": "шукав",
+      "start": 5.26,
+      "end": 5.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 5
+    },
+    {
+      "text": "роботу",
+      "start": 5.98,
+      "end": 6.48,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 6
+    },
+    {
+      "text": "у",
+      "start": 6.54,
+      "end": 6.58,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 7
+    },
+    {
+      "text": "місті",
+      "start": 6.64,
+      "end": 6.92,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 8
+    },
+    {
+      "text": "Лодзь",
+      "start": 6.96,
+      "end": 7.24,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 9
+    },
+    {
+      "text": "або",
+      "start": 7.54,
+      "end": 7.68,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 10
+    },
+    {
+      "text": "околицях,",
+      "start": 7.72,
+      "end": 8.26,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 11
+    },
+    {
+      "text": "маю",
+      "start": 9.58,
+      "end": 9.76,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 12
+    },
+    {
+      "text": "для",
+      "start": 9.8,
+      "end": 9.9,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 13
+    },
+    {
+      "text": "вас",
+      "start": 9.94,
+      "end": 10.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 14
+    },
+    {
+      "text": "хороший",
+      "start": 10.28,
+      "end": 10.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 15
+    },
+    {
+      "text": "варіант.",
+      "start": 10.64,
+      "end": 11.1,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 16
+    },
+    {
+      "text": "Відкрився",
+      "start": 11.3,
+      "end": 11.78,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 17
+    },
+    {
+      "text": "у",
+      "start": 11.82,
+      "end": 11.86,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 18
+    },
+    {
+      "text": "нас",
+      "start": 11.9,
+      "end": 12.06,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 19
+    },
+    {
+      "text": "набір",
+      "start": 12.12,
+      "end": 12.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 20
+    },
+    {
+      "text": "на",
+      "start": 12.7,
+      "end": 12.9,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 21
+    },
+    {
+      "text": "склад",
+      "start": 12.96,
+      "end": 13.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 22
+    },
+    {
+      "text": "інтернет-замовлень",
+      "start": 13.26,
+      "end": 14.28,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 23
+    },
+    {
+      "text": "Temu.",
+      "start": 14.76,
+      "end": 15.18,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 24
+    },
+    {
+      "text": "Робота",
+      "start": 15.56,
+      "end": 15.86,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 25
+    },
+    {
+      "text": "знаходиться",
+      "start": 15.9,
+      "end": 16.32,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 26
+    },
+    {
+      "text": "у",
+      "start": 16.36,
+      "end": 16.4,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 27
+    },
+    {
+      "text": "місті",
+      "start": 16.44,
+      "end": 16.7,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 28
+    },
+    {
+      "text": "Стриків.",
+      "start": 16.82,
+      "end": 17.32,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 29
+    },
+    {
+      "text": "По",
+      "start": 18.52,
+      "end": 18.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 30
+    },
+    {
+      "text": "процесам",
+      "start": 18.68,
+      "end": 19.14,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 31
+    },
+    {
+      "text": "це",
+      "start": 19.2,
+      "end": 19.28,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 32
+    },
+    {
+      "text": "у",
+      "start": 19.32,
+      "end": 19.36,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 33
+    },
+    {
+      "text": "нас",
+      "start": 19.4,
+      "end": 19.5,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 34
+    },
+    {
+      "text": "звичайні",
+      "start": 19.54,
+      "end": 19.96,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 35
+    },
+    {
+      "text": "складські",
+      "start": 20.0,
+      "end": 20.38,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 36
+    },
+    {
+      "text": "процеси:",
+      "start": 20.42,
+      "end": 21.0,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 37
+    },
+    {
+      "text": "пак,",
+      "start": 21.48,
+      "end": 21.78,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 38
+    },
+    {
+      "text": "пік,",
+      "start": 22.36,
+      "end": 22.64,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 39
+    },
+    {
+      "text": "відправка,",
+      "start": 22.94,
+      "end": 23.54,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 40
+    },
+    {
+      "text": "контроль",
+      "start": 23.94,
+      "end": 24.26,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 41
+    },
+    {
+      "text": "якості,",
+      "start": 24.4,
+      "end": 24.82,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 42
+    },
+    {
+      "text": "там,",
+      "start": 24.94,
+      "end": 25.1,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 43
+    },
+    {
+      "text": "переміщення",
+      "start": 25.26,
+      "end": 25.82,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 44
+    },
+    {
+      "text": "якесь",
+      "start": 25.86,
+      "end": 26.08,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 45
+    },
+    {
+      "text": "можливе.",
+      "start": 26.12,
+      "end": 26.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 46
+    },
+    {
+      "text": "Тобто",
+      "start": 27.04,
+      "end": 27.24,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 47
+    },
+    {
+      "text": "все",
+      "start": 27.28,
+      "end": 27.4,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 48
+    },
+    {
+      "text": "в",
+      "start": 27.44,
+      "end": 27.46,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 49
+    },
+    {
+      "text": "такому",
+      "start": 27.5,
+      "end": 27.74,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 50
+    },
+    {
+      "text": "плані,",
+      "start": 27.76,
+      "end": 28.0,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 51
+    },
+    {
+      "text": "звичайні",
+      "start": 28.06,
+      "end": 28.46,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 52
+    },
+    {
+      "text": "складські",
+      "start": 28.5,
+      "end": 28.82,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 53
+    },
+    {
+      "text": "процеси.",
+      "start": 28.88,
+      "end": 29.32,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 54
+    },
+    {
+      "text": "Підписується",
+      "start": 29.38,
+      "end": 29.92,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 55
+    },
+    {
+      "text": "у",
+      "start": 30.0,
+      "end": 30.04,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 56
+    },
+    {
+      "text": "нас",
+      "start": 30.08,
+      "end": 30.38,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 57
+    },
+    {
+      "text": "умова",
+      "start": 30.46,
+      "end": 30.94,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 58
+    },
+    {
+      "text": "злеценя.",
+      "start": 31.08,
+      "end": 31.64,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 59
+    },
+    {
+      "text": "Ми",
+      "start": 32.2,
+      "end": 32.32,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 60
+    },
+    {
+      "text": "шукаємо",
+      "start": 32.38,
+      "end": 32.92,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 61
+    },
+    {
+      "text": "хлопців",
+      "start": 33.8,
+      "end": 34.34,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 62
+    },
+    {
+      "text": "та",
+      "start": 35.02,
+      "end": 35.12,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 63
+    },
+    {
+      "text": "дівчат",
+      "start": 35.16,
+      "end": 35.76,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 64
+    },
+    {
+      "text": "віком",
+      "start": 35.9,
+      "end": 36.14,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 65
+    },
+    {
+      "text": "від",
+      "start": 36.18,
+      "end": 36.3,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 66
+    },
+    {
+      "text": "вісімнадцяти",
+      "start": 36.34,
+      "end": 36.98,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 67
+    },
+    {
+      "text": "до",
+      "start": 37.08,
+      "end": 37.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 68
+    },
+    {
+      "text": "п'ятдесяти",
+      "start": 37.28,
+      "end": 37.78,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 69
+    },
+    {
+      "text": "п'яти",
+      "start": 37.82,
+      "end": 38.02,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 70
+    },
+    {
+      "text": "років.",
+      "start": 38.06,
+      "end": 38.56,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 71
+    },
+    {
+      "text": "М-м-м,",
+      "start": 40.94,
+      "end": 41.26,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 72
+    },
+    {
+      "text": "по",
+      "start": 41.8,
+      "end": 41.94,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 73
+    },
+    {
+      "text": "заробітній",
+      "start": 41.98,
+      "end": 42.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 74
+    },
+    {
+      "text": "платі",
+      "start": 42.46,
+      "end": 42.72,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 75
+    },
+    {
+      "text": "це",
+      "start": 42.8,
+      "end": 42.86,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 76
+    },
+    {
+      "text": "у",
+      "start": 42.9,
+      "end": 42.94,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 77
+    },
+    {
+      "text": "нас",
+      "start": 42.98,
+      "end": 43.12,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 78
+    },
+    {
+      "text": "тридцять",
+      "start": 43.18,
+      "end": 43.46,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 79
+    },
+    {
+      "text": "три",
+      "start": 43.52,
+      "end": 43.7,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 80
+    },
+    {
+      "text": "шістдесят",
+      "start": 43.78,
+      "end": 44.34,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 81
+    },
+    {
+      "text": "злотих",
+      "start": 44.4,
+      "end": 44.8,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 82
+    },
+    {
+      "text": "брутто",
+      "start": 45.22,
+      "end": 45.52,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 83
+    },
+    {
+      "text": "на",
+      "start": 45.58,
+      "end": 45.66,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 84
+    },
+    {
+      "text": "годину,",
+      "start": 45.72,
+      "end": 46.14,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 85
+    },
+    {
+      "text": "що",
+      "start": 46.52,
+      "end": 46.66,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 86
+    },
+    {
+      "text": "дає",
+      "start": 46.7,
+      "end": 46.98,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 87
+    },
+    {
+      "text": "двадцять",
+      "start": 47.02,
+      "end": 47.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 88
+    },
+    {
+      "text": "сім",
+      "start": 47.48,
+      "end": 47.62,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 89
+    },
+    {
+      "text": "десять",
+      "start": 47.68,
+      "end": 48.16,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 90
+    },
+    {
+      "text": "злотих",
+      "start": 48.3,
+      "end": 48.84,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 91
+    },
+    {
+      "text": "нетто",
+      "start": 48.92,
+      "end": 49.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 92
+    },
+    {
+      "text": "на",
+      "start": 49.28,
+      "end": 49.36,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 93
+    },
+    {
+      "text": "годину.",
+      "start": 49.4,
+      "end": 49.86,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 94
+    },
+    {
+      "text": "Графік",
+      "start": 59.14,
+      "end": 59.46,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 95
+    },
+    {
+      "text": "роботи",
+      "start": 59.5,
+      "end": 59.82,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 96
+    },
+    {
+      "text": "це",
+      "start": 59.88,
+      "end": 59.96,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 97
+    },
+    {
+      "text": "у",
+      "start": 60.02,
+      "end": 60.04,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 98
+    },
+    {
+      "text": "нас",
+      "start": 60.08,
+      "end": 60.38,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 99
+    },
+    {
+      "text": "три,",
+      "start": 60.44,
+      "end": 60.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 100
+    },
+    {
+      "text": "три,",
+      "start": 60.72,
+      "end": 60.86,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 101
+    },
+    {
+      "text": "три.",
+      "start": 60.98,
+      "end": 61.28,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 102
+    },
+    {
+      "text": "Приблизно",
+      "start": 61.84,
+      "end": 62.5,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 103
+    },
+    {
+      "text": "по",
+      "start": 62.86,
+      "end": 63.24,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 104
+    },
+    {
+      "text": "десять",
+      "start": 63.3,
+      "end": 63.56,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 105
+    },
+    {
+      "text": "з",
+      "start": 63.6,
+      "end": 63.66,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 106
+    },
+    {
+      "text": "половиною",
+      "start": 63.72,
+      "end": 64.14,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 107
+    },
+    {
+      "text": "годин",
+      "start": 64.18,
+      "end": 64.519,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 108
+    },
+    {
+      "text": "триває",
+      "start": 64.9,
+      "end": 65.26,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 109
+    },
+    {
+      "text": "одна",
+      "start": 65.3,
+      "end": 65.5,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 110
+    },
+    {
+      "text": "зміна.",
+      "start": 65.56,
+      "end": 66.04,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 111
+    },
+    {
+      "text": "Знання",
+      "start": 70.5,
+      "end": 70.78,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 112
+    },
+    {
+      "text": "польської",
+      "start": 70.82,
+      "end": 71.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 113
+    },
+    {
+      "text": "мови",
+      "start": 71.28,
+      "end": 71.54,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 114
+    },
+    {
+      "text": "та",
+      "start": 71.6,
+      "end": 72.08,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 115
+    },
+    {
+      "text": "досвід",
+      "start": 72.16,
+      "end": 72.44,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 116
+    },
+    {
+      "text": "роботи",
+      "start": 72.48,
+      "end": 72.76,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 117
+    },
+    {
+      "text": "взагалі",
+      "start": 72.8,
+      "end": 73.2,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 118
+    },
+    {
+      "text": "не",
+      "start": 73.24,
+      "end": 73.32,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 119
+    },
+    {
+      "text": "потрібний.",
+      "start": 73.36,
+      "end": 73.98,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 120
+    },
+    {
+      "text": "Є",
+      "start": 74.24,
+      "end": 74.34,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 121
+    },
+    {
+      "text": "сканер,",
+      "start": 74.4,
+      "end": 74.88,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 122
+    },
+    {
+      "text": "на",
+      "start": 74.94,
+      "end": 75.0,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 123
+    },
+    {
+      "text": "якому",
+      "start": 75.06,
+      "end": 75.28,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 124
+    },
+    {
+      "text": "підтримується",
+      "start": 75.32,
+      "end": 75.84,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 125
+    },
+    {
+      "text": "вісімнадцять",
+      "start": 75.88,
+      "end": 76.94,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 126
+    },
+    {
+      "text": "мов.",
+      "start": 77.04,
+      "end": 77.38,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 127
+    },
+    {
+      "text": "Тобто",
+      "start": 77.82,
+      "end": 78.38,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 128
+    },
+    {
+      "text": "з",
+      "start": 78.44,
+      "end": 78.46,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 129
+    },
+    {
+      "text": "цим",
+      "start": 78.54,
+      "end": 78.66,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 130
+    },
+    {
+      "text": "абсолютно",
+      "start": 78.72,
+      "end": 79.12,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 131
+    },
+    {
+      "text": "проблем",
+      "start": 79.16,
+      "end": 79.66,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 132
+    },
+    {
+      "text": "ніяких",
+      "start": 79.74,
+      "end": 80.12,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 133
+    },
+    {
+      "text": "не",
+      "start": 80.18,
+      "end": 80.26,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 134
+    },
+    {
+      "text": "буде.",
+      "start": 80.32,
+      "end": 80.52,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 135
+    },
+    {
+      "text": "Беремо",
+      "start": 80.58,
+      "end": 80.84,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 136
+    },
+    {
+      "text": "всіх",
+      "start": 80.88,
+      "end": 81.34,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 137
+    },
+    {
+      "text": "без",
+      "start": 81.46,
+      "end": 81.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 138
+    },
+    {
+      "text": "досвіду.",
+      "start": 81.66,
+      "end": 82.2,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 139
+    },
+    {
+      "text": "Склад",
+      "start": 82.64,
+      "end": 82.96,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 140
+    },
+    {
+      "text": "новий,",
+      "start": 83.0,
+      "end": 83.36,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 141
+    },
+    {
+      "text": "там",
+      "start": 83.82,
+      "end": 84.0,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 142
+    },
+    {
+      "text": "ще",
+      "start": 84.08,
+      "end": 84.18,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 143
+    },
+    {
+      "text": "немає",
+      "start": 84.22,
+      "end": 84.56,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 144
+    },
+    {
+      "text": "як",
+      "start": 84.66,
+      "end": 84.72,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 145
+    },
+    {
+      "text": "такових",
+      "start": 84.76,
+      "end": 85.16,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 146
+    },
+    {
+      "text": "норм,",
+      "start": 85.22,
+      "end": 85.4,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 147
+    },
+    {
+      "text": "як",
+      "start": 85.48,
+      "end": 85.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 148
+    },
+    {
+      "text": "на",
+      "start": 85.66,
+      "end": 85.88,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 149
+    },
+    {
+      "text": "всіх",
+      "start": 85.94,
+      "end": 86.34,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 150
+    },
+    {
+      "text": "інших",
+      "start": 86.42,
+      "end": 86.7,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 151
+    },
+    {
+      "text": "крупних",
+      "start": 86.74,
+      "end": 87.06,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 152
+    },
+    {
+      "text": "проектах.",
+      "start": 87.1,
+      "end": 87.7,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 153
+    },
+    {
+      "text": "Тобто",
+      "start": 88.72,
+      "end": 89.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 154
+    },
+    {
+      "text": "реальна",
+      "start": 89.26,
+      "end": 89.56,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 155
+    },
+    {
+      "text": "можливість",
+      "start": 89.6,
+      "end": 90.12,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 156
+    },
+    {
+      "text": "також",
+      "start": 90.16,
+      "end": 90.5,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 157
+    },
+    {
+      "text": "є",
+      "start": 90.7,
+      "end": 90.8,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 158
+    },
+    {
+      "text": "виростити",
+      "start": 91.18,
+      "end": 91.68,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 159
+    },
+    {
+      "text": "якось,",
+      "start": 91.8,
+      "end": 92.14,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 160
+    },
+    {
+      "text": "пройтися",
+      "start": 93.16,
+      "end": 93.58,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 161
+    },
+    {
+      "text": "по",
+      "start": 93.62,
+      "end": 93.7,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 162
+    },
+    {
+      "text": "кар'єрному",
+      "start": 93.72,
+      "end": 94.18,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 163
+    },
+    {
+      "text": "росту,",
+      "start": 94.22,
+      "end": 94.48,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 164
+    },
+    {
+      "text": "швидко",
+      "start": 94.56,
+      "end": 94.86,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 165
+    },
+    {
+      "text": "дорости",
+      "start": 94.88,
+      "end": 95.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 166
+    },
+    {
+      "text": "до",
+      "start": 95.26,
+      "end": 95.34,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 167
+    },
+    {
+      "text": "лідера",
+      "start": 95.38,
+      "end": 95.8,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 168
+    },
+    {
+      "text": "чи",
+      "start": 95.9,
+      "end": 96.1,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 169
+    },
+    {
+      "text": "чомусь",
+      "start": 96.16,
+      "end": 96.4,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 170
+    },
+    {
+      "text": "подобного.",
+      "start": 96.46,
+      "end": 97.04,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 171
+    },
+    {
+      "text": "Е-е-м,",
+      "start": 98.16,
+      "end": 98.7,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 172
+    },
+    {
+      "text": "надаємо",
+      "start": 100.68,
+      "end": 101.04,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 173
+    },
+    {
+      "text": "безкоштовний",
+      "start": 101.08,
+      "end": 101.64,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 174
+    },
+    {
+      "text": "транспорт,",
+      "start": 101.68,
+      "end": 102.32,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 175
+    },
+    {
+      "text": "надаємо",
+      "start": 102.52,
+      "end": 103.02,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 176
+    },
+    {
+      "text": "житло,",
+      "start": 103.08,
+      "end": 103.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 177
+    },
+    {
+      "text": "кошт",
+      "start": 103.76,
+      "end": 103.96,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 178
+    },
+    {
+      "text": "якого",
+      "start": 104.0,
+      "end": 104.2,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 179
+    },
+    {
+      "text": "шістсот",
+      "start": 104.26,
+      "end": 104.5,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 180
+    },
+    {
+      "text": "п'ятдесят",
+      "start": 104.54,
+      "end": 104.86,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 181
+    },
+    {
+      "text": "злотих",
+      "start": 104.92,
+      "end": 105.28,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 182
+    },
+    {
+      "text": "в",
+      "start": 105.86,
+      "end": 105.9,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 183
+    },
+    {
+      "text": "місяць.",
+      "start": 105.96,
+      "end": 106.48,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 184
+    },
+    {
+      "text": "Робочий",
+      "start": 109.22,
+      "end": 109.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 185
+    },
+    {
+      "text": "одяг",
+      "start": 109.7,
+      "end": 109.98,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 186
+    },
+    {
+      "text": "та",
+      "start": 110.04,
+      "end": 110.34,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 187
+    },
+    {
+      "text": "взуття",
+      "start": 110.42,
+      "end": 110.78,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 188
+    },
+    {
+      "text": "надаємо",
+      "start": 110.84,
+      "end": 111.18,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 189
+    },
+    {
+      "text": "абсолютно",
+      "start": 111.22,
+      "end": 111.58,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 190
+    },
+    {
+      "text": "безкоштовно.",
+      "start": 111.6,
+      "end": 112.26,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 191
+    },
+    {
+      "text": "Тому",
+      "start": 112.48,
+      "end": 112.66,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 192
+    },
+    {
+      "text": "що",
+      "start": 112.74,
+      "end": 112.84,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 193
+    },
+    {
+      "text": "ж,",
+      "start": 112.88,
+      "end": 112.92,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 194
+    },
+    {
+      "text": "якщо",
+      "start": 112.98,
+      "end": 113.14,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 195
+    },
+    {
+      "text": "тебе",
+      "start": 113.18,
+      "end": 113.32,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 196
+    },
+    {
+      "text": "ця",
+      "start": 113.38,
+      "end": 113.46,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 197
+    },
+    {
+      "text": "вакансія",
+      "start": 113.48,
+      "end": 113.82,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 198
+    },
+    {
+      "text": "зацікавила",
+      "start": 113.86,
+      "end": 114.46,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 199
+    },
+    {
+      "text": "та",
+      "start": 115.1,
+      "end": 115.4,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 200
+    },
+    {
+      "text": "ви",
+      "start": 115.46,
+      "end": 115.54,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 201
+    },
+    {
+      "text": "хочете",
+      "start": 115.58,
+      "end": 115.9,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 202
+    },
+    {
+      "text": "забронювати",
+      "start": 115.94,
+      "end": 116.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 203
+    },
+    {
+      "text": "місце",
+      "start": 116.48,
+      "end": 116.68,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 204
+    },
+    {
+      "text": "на",
+      "start": 116.74,
+      "end": 117.0,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 205
+    },
+    {
+      "text": "саме",
+      "start": 117.06,
+      "end": 117.26,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 206
+    },
+    {
+      "text": "цю",
+      "start": 117.32,
+      "end": 117.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 207
+    },
+    {
+      "text": "вакансію",
+      "start": 117.46,
+      "end": 118.06,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 208
+    },
+    {
+      "text": "Temu",
+      "start": 118.66,
+      "end": 119.08,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 209
+    },
+    {
+      "text": "у",
+      "start": 119.18,
+      "end": 119.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 210
+    },
+    {
+      "text": "місті",
+      "start": 119.48,
+      "end": 119.72,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 211
+    },
+    {
+      "text": "Стриків,",
+      "start": 119.8,
+      "end": 120.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 212
+    },
+    {
+      "text": "запрошую",
+      "start": 121.46,
+      "end": 121.86,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 213
+    },
+    {
+      "text": "вас",
+      "start": 121.88,
+      "end": 122.0,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 214
+    },
+    {
+      "text": "до",
+      "start": 122.04,
+      "end": 122.12,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 215
+    },
+    {
+      "text": "контакту.",
+      "start": 122.16,
+      "end": 122.68,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 216
+    },
+    {
+      "text": "Мене",
+      "start": 122.86,
+      "end": 123.04,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 217
+    },
+    {
+      "text": "звати",
+      "start": 123.08,
+      "end": 123.3,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 218
+    },
+    {
+      "text": "Марк.",
+      "start": 123.36,
+      "end": 123.64,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 219
+    },
+    {
+      "text": "По",
+      "start": 123.68,
+      "end": 123.74,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 220
+    },
+    {
+      "text": "всім",
+      "start": 123.78,
+      "end": 123.94,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 221
+    },
+    {
+      "text": "питанням",
+      "start": 123.98,
+      "end": 124.3,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 222
+    },
+    {
+      "text": "проконсультую.",
+      "start": 124.32,
+      "end": 125.2,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 223
+    },
+    {
+      "text": "Завжди",
+      "start": 125.84,
+      "end": 126.1,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 224
+    },
+    {
+      "text": "на",
+      "start": 126.14,
+      "end": 126.22,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 225
+    },
+    {
+      "text": "зв'язку.",
+      "start": 126.26,
+      "end": 126.82,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 226
+    },
+    {
+      "text": "До--",
+      "start": 128.5,
+      "end": 128.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 227
+    },
+    {
+      "text": "ні.",
+      "start": 129.0,
+      "end": 129.16,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 228
+    },
+    {
+      "text": "Сука,",
+      "start": 130.34,
+      "end": 130.52,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 229
+    },
+    {
+      "text": "не",
+      "start": 130.58,
+      "end": 130.62,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 230
+    },
+    {
+      "text": "можу",
+      "start": 130.66,
+      "end": 130.78,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 231
+    },
+    {
+      "text": "слова",
+      "start": 130.84,
+      "end": 131.0,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 232
+    },
+    {
+      "text": "підібрати.",
+      "start": 131.06,
+      "end": 131.56,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 233
+    },
+    {
+      "text": "Е-е-м,",
+      "start": 132.38,
+      "end": 132.64,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 234
+    },
+    {
+      "text": "тому",
+      "start": 133.44,
+      "end": 133.6,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 235
+    },
+    {
+      "text": "якщо",
+      "start": 133.64,
+      "end": 133.8,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 236
+    },
+    {
+      "text": "тебе",
+      "start": 133.84,
+      "end": 133.98,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 237
+    },
+    {
+      "text": "ця",
+      "start": 134.02,
+      "end": 134.1,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 238
+    },
+    {
+      "text": "вакансія",
+      "start": 134.12,
+      "end": 134.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 239
+    },
+    {
+      "text": "зацікавила,",
+      "start": 134.46,
+      "end": 135.02,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 240
+    },
+    {
+      "text": "мене",
+      "start": 135.26,
+      "end": 135.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 241
+    },
+    {
+      "text": "звати",
+      "start": 135.46,
+      "end": 135.68,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 242
+    },
+    {
+      "text": "Марк,",
+      "start": 135.72,
+      "end": 135.9,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 243
+    },
+    {
+      "text": "по",
+      "start": 135.96,
+      "end": 136.02,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 244
+    },
+    {
+      "text": "всім",
+      "start": 136.06,
+      "end": 136.2,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 245
+    },
+    {
+      "text": "питанням",
+      "start": 136.24,
+      "end": 136.52,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 246
+    },
+    {
+      "text": "проконсультую,",
+      "start": 136.56,
+      "end": 137.12,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 247
+    },
+    {
+      "text": "якщо",
+      "start": 137.2,
+      "end": 137.42,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 248
+    },
+    {
+      "text": "виникають.",
+      "start": 137.46,
+      "end": 138.0,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 249
+    },
+    {
+      "text": "М-м-м,",
+      "start": 138.68,
+      "end": 139.46,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 250
+    },
+    {
+      "text": "на",
+      "start": 139.5,
+      "end": 139.58,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 251
+    },
+    {
+      "text": "зв'язку.",
+      "start": 139.62,
+      "end": 140.08,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 252
+    },
+    {
+      "text": "Поїде.",
+      "start": 142.52,
+      "end": 143.04,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 253
+    },
+    {
+      "text": "Поїде.",
+      "start": 145.24,
+      "end": 145.36,
+      "kind": "word",
+      "speaker": "speaker_0",
+      "i": 254
+    }
+  ]
+}
