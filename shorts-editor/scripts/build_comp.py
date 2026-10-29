@@ -174,13 +174,20 @@ def overlay_html(k, o):
 
 
 def emoji_file(ch):
-    """Twemoji SVG for an emoji character (assets/emoji/<codepoints>.svg)."""
+    """Emoji image for a character. Style "emoji": {"set": "3d"} (default) = Microsoft Fluent 3D
+    (assets/emoji-3d/*.webp, glossy, iPhone-like); "flat" = Twemoji (assets/emoji/*.svg)."""
     cps = [f"{ord(c):x}" for c in ch]
-    for cand in ("-".join(cps), "-".join(c for c in cps if c != "fe0f")):
-        f = ROOT / "assets" / "emoji" / f"{cand}.svg"
-        if f.exists():
-            return f
-    raise SystemExit(f"emoji not in assets/emoji: {ch!r} ({'-'.join(cps)})")
+    bare = [c for c in cps if c != "fe0f"]
+    cands = ["-".join(cps), "-".join(bare), "-".join(bare + ["fe0f"]) if len(bare) == 1 else None]
+    sets = [("emoji-3d", "webp"), ("emoji", "svg")]
+    if theme().get("emoji", {}).get("set") == "flat":
+        sets.reverse()
+    for folder, ext in sets:
+        for cand in filter(None, cands):
+            f = ROOT / "assets" / folder / f"{cand}.{ext}"
+            if f.exists():
+                return f
+    raise SystemExit(f"emoji not found: {ch!r} ({'-'.join(cps)})")
 
 
 def overlay_js(k, o):
