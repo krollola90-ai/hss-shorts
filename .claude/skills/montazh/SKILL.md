@@ -35,6 +35,26 @@ save his choice into the preset (`"style"`, `"status": "approved"`), then commit
 
 Before cutting, read `shorts-editor/docs/voice.md` (how Mark talks, what to keep, what to cut).
 
+## 2a. Think like Mark's editor, not a command runner
+
+Mark wants Claude to understand what each video is trying to say and decide the form from that —
+not apply one template mechanically. Before planning cuts and visuals:
+
+1. Write for yourself, in one sentence, **what Mark wants the viewer to take away**, and who it is for.
+2. Split the cleaned script into **meaning blocks** (hook, problem, story/example, personal thought,
+   rule/steps, call to action) and pick the form **per block**, mixing presets and references freely:
+   e.g. a reflective personal thought → Mark on camera with a `top` panel image (MM2); a story about a
+   famous person → full-screen photos (MM1); steps → big numbers; a fact or number → stat card /
+   screenshot; an emotional peak → a zoom and silence instead of an image. One video may combine
+   several references; captions/font stay one style for the whole video so it still looks like one piece.
+3. Judge **what fits and what doesn't**: no jokes/meme stickers on a serious or sad moment, no
+   cluttered visuals over a personal confession, fast cuts only where the energy is high, Mark's
+   face on screen when he says something personal (trust comes from his eyes, not from pictures).
+4. Respect his voice (`docs/voice.md`): keep his words and pace, cut only noise; don't rewrite his
+   thought into someone else's.
+5. In the visual brief / draft message, explain the choices in 2–3 short lines ("начало — коллаж,
+   потому что…; о себе — ты в кадре…") so Mark can correct the logic, then learn from his corrections.
+
 ## 2b. Visual brief (formats with `"visuals": "brief"` — thoughts, motivation, about me, ideas, news, advice, answers, vlog)
 
 Mark's rule: for these videos **don't start editing right away**. First:
