@@ -19,19 +19,20 @@ If Mark already said the format or pasted a link, skip that question.
 
 ## 2. Load the preset
 
-`shorts-editor/formats/<format>.json` — theme, pace, target length, structure, overlay rules,
-music mood, ending. Presets marked `"status": "draft"` have never been tested on a real video:
+`shorts-editor/formats/<format>.json` — style, target length, structure, overlay rules,
+music mood, ending. Format keys: vacancy, thought, idea, vlog, edit. Presets marked `"status": "draft"` have never been tested on a real video:
 before the first edit in that format, show Mark 3 style options on frames of his video
-(as done for vacancies: build the project with each candidate theme via `SHORTS_THEME`,
-snapshot 3 moments, stack into one image) and save his choice into the preset
-(`"theme"`, `"status": "approved"`), then commit.
+(build the project with each candidate via `SHORTS_STYLE=$PWD/shorts-editor/styles/<s>.json shorts build`,
+snapshot 3 moments, stack into one image; catalogue of styles: `shorts-editor/docs/styles.md`) and
+save his choice into the preset (`"style"`, `"status": "approved"`), then commit.
 
 ## 3. Edit
 
 Follow `shorts-editor` SKILL.md steps 1–7 with these rules:
 
 - Project name: `<format>-<YYYYMMDD>-<short-topic>` (e.g. `vacancy-20261029-temu-strykow`).
-- Write `"theme"` from the preset into `projects/<name>/project.json`.
+- Intake: `shorts fetch <name> <drive-link> <format>` (or `shorts new <name> <file> <format>`) — it
+  writes the preset's style into `project.json`. Mark may ask for another style: edit `"style"` there.
 - Language: transcribe with ElevenLabs while credits last; otherwise Whisper medium (free).
 - Story order follows the preset's `structure`; keep every fact, drop fillers/retakes/off-camera talk.
 - Ending: preset's `ending` text unless Mark says otherwise.

@@ -1,7 +1,7 @@
 {
   "status": "draft",
   "title": "Влог",
-  "theme": "themes/v3-green-calm.json",
+  "style": "styles/green-calm.json",
   "target_seconds": [
     30,
     180

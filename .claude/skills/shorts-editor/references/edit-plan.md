@@ -32,7 +32,7 @@ All times are seconds on the CUT timeline (`work/cuts.json` → `words[].start/e
 
 | Key | Notes |
 | --- | --- |
-| `hook` | 1–2 lines, ≤ 18 characters each, uppercase. Alternating yellow/white blocks pop in at `start`. Default SFX `vine-boom` (falls back to `bass-drop-1` until vine-boom is in the library). |
+| `hook` | 1–2 lines, ≤ 18 characters each, uppercase. Alternating yellow/white blocks pop in at `start`. Default SFX `vine-boom` (plays `boom-deep` until a vine-boom file is added). |
 | `zooms` | Omit the key → automatic punch-ins every 2–4 s on sentence starts (`theme.zoom`). `[]` → none. Each entry sets the camera scale from `t` on (0.18 s ease); return to `1.0` explicitly. `sfx` is optional: put a whoosh on at most every other zoom. |
 | `overlays[].type` | `badge` numbered list item; `stat` giant number; `card` glass title + body; `list` staged bullet reveal (`items: [text, time]`); `code` terminal card with typing reveal; `image` screenshot (`layout: card` top half, `full` covers the speaker). |
 | `overlays[].position` | `top` (default, y=230), `middle` (y=720), `bottom` (y=1000). Never over the face: check the contact sheet. |

@@ -6,10 +6,16 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent  # shorts-editor/
-SFX_DIR = ROOT / "sfx"
-MUSIC_DIR = ROOT / "music"
-VENDOR_DIR = ROOT / "vendor"
-THEME_PATH = Path(os.environ["SHORTS_THEME"]) if os.environ.get("SHORTS_THEME") else ROOT / "theme.json"
+ASSETS_DIR = ROOT / "assets"
+SFX_DIR = ASSETS_DIR / "sfx"
+MUSIC_DIR = ASSETS_DIR / "music"
+FONTS_DIR = ASSETS_DIR / "fonts"
+VENDOR_DIR = ASSETS_DIR / "vendor"
+STYLES_DIR = ROOT / "styles"
+DEFAULT_STYLE = STYLES_DIR / "white-minimal.json"
+# the active style: SHORTS_STYLE (set by the `shorts` CLI from project.json) or the default
+_style_env = os.environ.get("SHORTS_STYLE") or os.environ.get("SHORTS_THEME")
+THEME_PATH = Path(_style_env) if _style_env else DEFAULT_STYLE
 
 W, H, FPS = 1080, 1920, 30
 MAX_DURATION = 120.0

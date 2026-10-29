@@ -1,7 +1,7 @@
 {
   "status": "draft",
   "title": "Идея",
-  "theme": "themes/v1-yellow-classic.json",
+  "style": "styles/yellow-classic.json",
   "target_seconds": [
     30,
     90

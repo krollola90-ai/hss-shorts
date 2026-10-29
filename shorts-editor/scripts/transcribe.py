@@ -15,7 +15,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from common import duration, env, log, run, save_json
+from common import load_json, duration, env, log, run, save_json
 
 SCRIBE_URL = "https://api.elevenlabs.io/v1/speech-to-text"
 
@@ -118,7 +118,25 @@ def main():
     ap.add_argument("out")
     ap.add_argument("--language", default=None, help="ISO-639-1: en, ru, uk, es")
     ap.add_argument("--engine", default="auto", choices=["auto", "scribe", "whisper"])
+    ap.add_argument("--import-scribe", metavar="WORDS_JSON",
+                    help="use a Scribe words.json downloaded via the ElevenLabs connector instead of calling an API")
     a = ap.parse_args()
+
+    if a.import_scribe:
+        d = load_json(a.import_scribe)
+        lang = a.language or {"ukr": "uk", "rus": "ru", "eng": "en", "pol": "pl"}.get(d.get("language_code"), None) or "uk"
+        words = []
+        for w in d.get("words", d if isinstance(d, list) else []):
+            if w.get("type") == "spacing" or not w["text"].strip() or w["text"].strip() == "-":
+                continue
+            kind = "event" if w.get("type") == "audio_event" else classify(w["text"], lang)
+            words.append({"text": w["text"], "start": float(w["start"]), "end": float(w["end"]),
+                          "kind": kind, "speaker": w.get("speaker_id", "speaker_0")})
+        for i, w in enumerate(words):
+            w["i"] = i
+        save_json(a.out, {"engine": "scribe", "language": lang, "duration": duration(a.video), "words": words})
+        log(f"scribe (imported): {len(words)} tokens -> {a.out}")
+        return
 
     with tempfile.TemporaryDirectory() as td:
         audio = str(Path(td) / "audio.flac")

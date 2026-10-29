@@ -32,5 +32,5 @@
 ## Captions
 
 - Word-by-word karaoke, 3 words per group, broken at punctuation and 150 ms pauses.
-- Uppercase (Cyrillic too); Inter Black. The active word turns accent yellow; emphasised words stay yellow.
+- Uppercase (Cyrillic too); the style font (default Inter Black). The active word turns the style accent colour; emphasised words get a solid plate (`emphasis_style: plate`).
 - Captions are in the spoken language; don't translate unless asked.

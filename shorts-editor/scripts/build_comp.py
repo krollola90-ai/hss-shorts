@@ -3,7 +3,7 @@
 
 usage: build_comp.py <project_dir>
 
-Reads  <project_dir>/work/cut.mp4, work/cuts.json, edit_plan.json, ../../theme.json
+Reads  <project_dir>/work/cut.mp4, work/cuts.json, edit_plan.json, the active style (styles/*.json)
 Writes <project_dir>/hf/ (index.html + assets/) ready for `hyperframes render`.
 
 Edit plan schema (all times are in CUT-timeline seconds; see SKILL.md):
@@ -33,7 +33,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from common import (FPS, H, ROOT, SFX_DIR, VENDOR_DIR, W, db_to_gain, duration, load_json,
+from common import (FONTS_DIR, FPS, H, ROOT, SFX_DIR, VENDOR_DIR, W, db_to_gain, duration, load_json,
                     log, theme)
 
 esc = html.escape
@@ -47,7 +47,7 @@ def sfx_manifest():
 
 
 # Stand-ins used until the approved originals are in the library (see sfx-library.md).
-FALLBACKS = {"vine-boom": "bass-drop-1", "camera-shutter": "click", "record-scratch": "glitch-1",
+FALLBACKS = {"vine-boom": "boom-deep", "record-scratch": "glitch-1",
              "ka-ching": "correct-chime", "bonk": "pop", "fahhh": "wrong-buzzer",
              "bruh": "wrong-buzzer", "crowd-ooh": "sparkle"}
 
@@ -192,7 +192,7 @@ def overlay_js(k, o):
 CSS = """
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:%(W)dpx;height:%(H)dpx;overflow:hidden;background:#000}
-#root{position:relative;width:100%%;height:100%%;font-family:'Inter',sans-serif;color:var(--ink)}
+#root{position:relative;width:100%%;height:100%%;font-family:'%(font)s','Inter',sans-serif;color:var(--ink)}
 :root{--ink:%(ink)s;--ink-dim:%(ink_dim)s;--accent:%(accent)s;--accent-ink:%(accent_ink)s;
 --glass:%(glass)s;--glass-border:%(glass_border)s;--radius:%(radius)dpx;
 --cap-idle:%(cap_idle)s;--hook-bg:%(hook_bg)s;--hook-ink:%(hook_ink)s;--hook-alt-bg:%(hook_alt_bg)s;--hook-alt-ink:%(hook_alt_ink)s;--stat:%(stat_color)s}
@@ -247,8 +247,15 @@ line-height:1.08;letter-spacing:-0.01em;%(cap_case)s}
 
 
 def fonts_css():
-    css = (VENDOR_DIR / "fonts" / "inter.css").read_text()
-    return re.sub(r"url\((inter-[^)]+)\)", r"url(assets/fonts/\1)", css)
+    css = (font_dir() / "font.css").read_text()
+    return re.sub(r"url\(([^)]+\.woff2)\)", r"url(assets/fonts/\1)", css)
+
+
+def font_dir():
+    """assets/fonts/<family-slug>/ for the active style's font_family (falls back to Inter)."""
+    fam = theme().get("font_family", "Inter")
+    d = FONTS_DIR / re.sub(r"[^a-z0-9]+", "-", fam.lower()).strip("-")
+    return d if (d / "font.css").exists() else FONTS_DIR / "inter"
 
 
 def main():
@@ -264,7 +271,7 @@ def main():
     assets = hf / "assets"
     for d in ("fonts", "sfx", "music", "broll", "vendor"):
         (assets / d).mkdir(parents=True, exist_ok=True)
-    for f in (VENDOR_DIR / "fonts").glob("*.woff2"):
+    for f in font_dir().glob("*.woff2"):
         shutil.copy2(f, assets / "fonts" / f.name)
     shutil.copy2(VENDOR_DIR / "gsap.min.js", assets / "vendor" / "gsap.min.js")
     video_asset = assets / "cut.mp4"
@@ -396,7 +403,7 @@ def main():
             t, off, n = t + seg, 0.0, n + 1
 
     c = th["colors"]
-    css = CSS % dict(W=W, H=H, radius=th["radius"], cap_bottom=ccfg["bottom_px"],
+    css = CSS % dict(W=W, H=H, radius=th["radius"], font=th.get("font_family", "Inter"), cap_bottom=ccfg["bottom_px"],
                      cap_weight=ccfg["weight"], cap_shadow=ccfg["stroke"],
                      cap_case="text-transform:uppercase;" if ccfg.get("uppercase") else "",
                      cap_idle=ccfg.get("idle_color", c["ink"]),

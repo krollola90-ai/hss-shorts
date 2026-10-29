@@ -1,6 +1,6 @@
 # SFX library status
 
-The person approved these 16 sound types (2026-10-26). "In library" means a file is in `shorts-editor/sfx/` with `approved: true` in `manifest.json`.
+The person approved these 16 sound types (2026-10-26). "In library" means a file is in `shorts-editor/assets/sfx/` with `approved: true` in `manifest.json`.
 
 | Category | Sound | In library | File(s) / where to get it |
 | --- | --- | --- | --- |

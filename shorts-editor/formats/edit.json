@@ -1,7 +1,7 @@
 {
   "status": "draft",
   "title": "Эдит",
-  "theme": "themes/v2-blue-fast.json",
+  "style": "styles/blue-dynamic.json",
   "target_seconds": [
     10,
     40

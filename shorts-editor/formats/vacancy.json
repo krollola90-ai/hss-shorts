@@ -1,11 +1,11 @@
 {
   "status": "approved",
   "title": "Вакансия",
-  "theme": "themes/a-white-minimal-fast.json",
-  "alt_themes": [
-    "themes/v1-yellow-classic.json",
-    "themes/v2-blue-fast.json",
-    "themes/v3-green-calm.json"
+  "style": "styles/white-minimal-fast.json",
+  "alt_styles": [
+    "styles/yellow-classic.json",
+    "styles/blue-dynamic.json",
+    "styles/green-calm.json"
   ],
   "target_seconds": [
     30,

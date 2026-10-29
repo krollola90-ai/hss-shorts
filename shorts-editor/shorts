@@ -1,34 +1,60 @@
 #!/usr/bin/env bash
 # shorts-editor CLI. Run from anywhere: shorts-editor/shorts <command> <project> [...]
-#   new <name> <raw_video>      create projects/<name>/ and register the raw footage
+#   new <name> <raw> [format]   create projects/<name>/, 1080p working copy, audio; style from formats/<format>.json
+#   fetch <name> <drive-link> [format]  download a shared Google Drive video, then `new`
+#   import-scribe <name> <json> import an ElevenLabs Scribe words.json (from the connector)
 #   transcribe <name> [lang]    Scribe (or Whisper fallback) -> work/words.json
 #   cuts <name>                 plan cut points -> work/cuts.json (uses overrides.json if present)
 #   cut <name> [--preview]      FFmpeg talking-head cut -> work/cut.mp4
 #   build <name>                edit_plan.json -> hf/index.html (HyperFrames project)
 #   check <name>                hyperframes check + contact sheet
+#   snap <name> <t1,t2> [dir]   frames at exact times for review (+ contact-sheet.jpg)
 #   preview <name>              low-res draft render -> work/preview.mp4
 #   render <name>               full render + loudness + QC -> footage/edited/<name>.mp4
 #   all <name>                  cuts + cut + build + check + render (after the plan is approved)
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+[ -f "$HERE/.env.sh" ] && . "$HERE/.env.sh"   # written by setup.sh (render browser, proxy)
 S="$HERE/scripts"
 cmd="${1:-}"; name="${2:-}"
-[ -z "$cmd" ] && { sed -n '2,12p' "$0"; exit 1; }
+[ -z "$cmd" ] && { sed -n '2,16p' "$0"; exit 1; }
 P="$HERE/projects/$name"
 raw() { python3 -c "import json;print(json.load(open('$P/project.json'))['raw'])"; }
-# a project may pin its own style: project.json -> "theme": "themes/<name>.json"
-if [ -z "${SHORTS_THEME:-}" ] && [ -f "$P/project.json" ]; then
-  th="$(python3 -c "import json;print(json.load(open('$P/project.json')).get('theme',''))")"
-  [ -n "$th" ] && export SHORTS_THEME="$HERE/$th"
+# each project pins its style: project.json -> "style": "styles/<name>.json"
+if [ -z "${SHORTS_STYLE:-}" ] && [ -f "$P/project.json" ]; then
+  st="$(python3 -c "import json;d=json.load(open('$P/project.json'));print(d.get('style') or d.get('theme') or '')")"
+  [ -n "$st" ] && export SHORTS_STYLE="$HERE/$st"
 fi
 
 case "$cmd" in
   new)
-    src="$3"; mkdir -p "$P/work" "$P/broll" "$HERE/footage/raw"
-    dst="$HERE/footage/raw/$(basename "$src")"
+    # shorts new <name> <raw_video> [format]   (format = vacancy|thought|idea|vlog|edit)
+    src="$3"; fmt="${4:-vacancy}"; mkdir -p "$P/work" "$P/broll" "$HERE/footage/raw"
+    ext="${src##*.}"; dst="$HERE/footage/raw/$name.$ext"
     if [ "$(realpath "$src")" != "$(realpath -m "$dst")" ]; then cp --update=none "$src" "$dst"; fi
-    printf '{"name": "%s", "raw": "%s"}\n' "$name" "footage/raw/$(basename "$src")" > "$P/project.json"
-    echo "project -> $P" ;;
+    st="$(python3 -c "import json;print(json.load(open('$HERE/formats/$fmt.json')).get('style','styles/white-minimal.json'))" 2>/dev/null || echo styles/white-minimal.json)"
+    # working copy: upright 1080x1920 30 fps (phones store 4K/HEVC/rotated; cutting from it is fast)
+    work="$HERE/footage/raw/${name}_1080.mp4"
+    [ -f "$work" ] || ffmpeg -y -v error -i "$dst" -map 0:v:0 -map 0:a:0 \
+      -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30" \
+      -c:v libx264 -preset superfast -crf 15 -pix_fmt yuv420p -c:a aac -b:a 192k "$work"
+    ffmpeg -y -v error -i "$work" -vn -ac 1 -b:a 96k "$P/work/audio.mp3"
+    printf '{"name": "%s", "format": "%s", "style": "%s", "raw": "footage/raw/%s_1080.mp4", "source": "footage/raw/%s.%s"}\n' \
+      "$name" "$fmt" "$st" "$name" "$name" "$ext" > "$P/project.json"
+    echo "project -> $P  (format $fmt, style $st; audio for transcription: $P/work/audio.mp3)" ;;
+  fetch)
+    # shorts fetch <name> <google-drive-link> [format]  -> download a link shared "anyone with the link", then `new`
+    id="$(echo "$3" | grep -oE '/d/[A-Za-z0-9_-]+|id=[A-Za-z0-9_-]+' | head -1 | sed -E 's#^(/d/|id=)##')"
+    [ -z "$id" ] && { echo "not a Google Drive file link: $3"; exit 1; }
+    tmp="$HERE/footage/raw/.$name.download"; mkdir -p "$HERE/footage/raw"
+    curl -sSL -o "$tmp" "https://drive.usercontent.google.com/download?id=$id&export=download&confirm=t"
+    if file "$tmp" | grep -qi html; then rm -f "$tmp"; echo "Drive returned a sign-in page: set sharing to 'Anyone with the link'"; exit 1; fi
+    ext="$(file -b --mime-type "$tmp" | grep -q quicktime && echo MOV || echo mp4)"
+    mv "$tmp" "$HERE/footage/raw/$name.$ext"
+    "$0" new "$name" "$HERE/footage/raw/$name.$ext" "${4:-vacancy}" ;;
+  import-scribe)
+    # shorts import-scribe <name> <scribe_words.json> [lang]  (transcript from the ElevenLabs connector)
+    python3 "$S/transcribe.py" "$P/work/audio.mp3" "$P/work/words.json" --import-scribe "$3" ${4:+--language "$4"} ;;
   transcribe)
     lang="${3:-}"; python3 "$S/transcribe.py" "$HERE/$(raw)" "$P/work/words.json" ${lang:+--language "$lang"} ;;
   cuts)
@@ -43,6 +69,10 @@ case "$cmd" in
      python3 -c "import json;d=json.load(open('$P/work/check.json'));print('check ok' if d.get('ok') else json.dumps(d.get('findings',[])[:20],indent=1))"
      rm -rf .hyperframes/artifacts/snapshots
      hyperframes snapshot --json > "$P/work/snapshot.json" && ls .hyperframes/artifacts/snapshots/*/contact-sheet.jpg) ;;
+  snap)
+    # shorts snap <name> <t1,t2,...> [out_dir]  -> PNG frames (+contact sheet) at exact times
+    out="${4:-$P/work/snap}"; rm -rf "$out"
+    (cd "$P/hf" && hyperframes snapshot --at "$3" --no-end -o "$out" >/dev/null) && ls "$out"/*.jpg ;;
   preview)
     (cd "$P/hf" && hyperframes render -o "$P/work/preview.mp4" --quality draft --quiet) ;;
   render)

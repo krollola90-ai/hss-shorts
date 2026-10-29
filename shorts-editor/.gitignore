@@ -4,3 +4,5 @@ projects/*/hf/.hyperframes/
 projects/*/hf/node_modules/
 __pycache__/
 *.filtergraph.txt
+projects/*/hf/
+.env.sh
