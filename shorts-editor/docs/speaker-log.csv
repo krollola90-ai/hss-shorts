@@ -1,0 +1,6 @@
+project,format,source_s,final_s,cut_pct,words_per_min,fillers_per_min,pauses_over_1s,pause_total_s,removed_words
+vacancy-20261027-bydgoszcz,vacancy,83,36,57,150,2.3,7,25,39
+vacancy-20261027-lodz-gluchow,vacancy,94,36,62,148,0.7,5,39,13
+vacancy-20261028-poznan,vacancy,143,43,70,157,3.0,13,57,82
+vacancy-20261029-temu-strykow,vacancy,145,60,59,156,4.6,15,35,98
+vacancy-20261029-teresin,vacancy,134,37,72,162,0.5,9,68,60

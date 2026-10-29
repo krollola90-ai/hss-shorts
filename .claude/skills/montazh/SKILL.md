@@ -49,7 +49,15 @@ Follow `shorts-editor` SKILL.md steps 1–7 with these rules:
   video, go straight to final and say so).
 - Deliver with SendUserFile; when the Drive connector is available, also upload to «02_Готово».
 
-## 4. Learn
+## 4. Learn (after every video)
 
-When Mark corrects something that should apply to all future videos of that format
-(«всегда без капса», «концовка короче»), update the preset file and commit.
+1. `python3 shorts-editor/scripts/speaker_report.py shorts-editor/projects/<name>` — appends metrics
+   to `docs/speaker-log.csv`.
+2. Update «Наблюдения» in `docs/voice.md`: what was new in this video (new filler, new habit, a
+   strength, how the hook/ending went), compared with the log. Keep it about **how Mark speaks and
+   presents** (pace, structure, clarity, warmth) — no psychological or personality diagnoses.
+3. Give Mark 1–2 short, kind tips for the next recording in the final message (only when useful).
+4. Tune defaults from the data: e.g. if pauses get shorter, relax `cuts.max_pause`; if a new filler
+   appears often, add it to the filler list in `scripts/transcribe.py`.
+5. When Mark corrects something that should apply to all videos of a format or to his voice
+   («всегда без капса», «эту фразу не режь»), write it into the preset or `docs/voice.md`. Commit.
