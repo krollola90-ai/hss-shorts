@@ -27,7 +27,7 @@ If Mark already said the format or pasted a link, skip that question.
 ## 2. Load the preset
 
 `shorts-editor/formats/<format>.json` — style, target length, structure, overlay rules,
-music mood, ending. Format keys: vacancy, news, thought, idea, about, vlog, edit, advice, answer. Presets marked `"status": "draft"` have never been tested on a real video:
+music mood, ending. Format keys: vacancy, news, thought, motivation, idea, about, vlog, edit, advice, answer. Presets marked `"status": "draft"` have never been tested on a real video:
 before the first edit in that format, show Mark 3 style options on frames of his video
 (build the project with each candidate via `SHORTS_STYLE=$PWD/shorts-editor/styles/<s>.json shorts build`,
 snapshot 3 moments, stack into one image; catalogue of styles: `shorts-editor/docs/styles.md`) and
@@ -44,7 +44,10 @@ Mark's rule: for these videos **don't start editing right away**. First:
    order) and the captions.
 2. Find every moment a picture would help the viewer understand: people he mentions (e.g. Michael
    Jackson young), objects and places (a guitar, a city, a warehouse), events, abstract ideas
-   (alter ego → mirror/two faces), numbers. Aim for ~8–12 visuals per minute of final video.
+   (alter ego → mirror/two faces), numbers. Aim for ~8–12 visuals per minute of final video;
+   for `motivation` follow the variant: **doc** (ref MM1) ~20–25/min, full-screen photos, a 4-photo
+   `grid` hook, step numbers; **panel** (ref MM2) ~12–18/min, `layout: top`, symbolic images
+   (paintings, b&w photos, surreal collages). Ask Mark which variant if the video doesn't make it obvious.
 3. Send Mark a **visual brief** (SendUserMessage, a table) and stop until he answers:
 
    | № | Момент (фраза) | Что нужно | Фото или видео | Имя файла |
@@ -60,7 +63,8 @@ Mark's rule: for these videos **don't start editing right away**. First:
    the file names from the table. The folder inherits the inbox's link sharing.
 5. When Mark says «скинул», list the folder (`search_files parentId = '<folder id>'`), download each
    file with `shorts asset <project> <file id> <file name>`, and place them: photos → `image`
-   (`layout: full` for story moments, `card` for references), videos → `video` B-roll; time each one
+   (`layout: full` for story moments, `top` for the panel variant, `card` for references; `"number": N` for steps;
+   `grid` overlay with 4 images for a collage hook), videos → `video` B-roll; time each one
    to the exact word from `work/cuts.json`. Missing items → the fallback from the brief.
 6. Then continue with the normal edit and a draft preview.
 

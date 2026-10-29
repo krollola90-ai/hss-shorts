@@ -266,7 +266,7 @@ html,body{width:%(W)dpx;height:%(H)dpx;overflow:hidden;background:#000}
 .ov{position:absolute;left:0;right:0;z-index:10;display:flex;justify-content:center}
 .ov>*{will-change:transform,opacity}
 .pos-top{top:230px}.pos-middle{top:720px}.pos-bottom{top:1000px}
-.ov-full{inset:0;top:0!important;z-index:5}.ov-full>.shot{position:absolute;inset:0}
+.ov-full{inset:0;top:0!important;z-index:5}.ov-full>.shot{position:absolute;inset:0}.ov-full>.shot{position:absolute;inset:0}
 .ov-video{position:absolute;z-index:6;display:flex;flex-direction:column;align-items:center}
 .ov-video-full{inset:0}.ov-video-full .vframe{position:absolute;inset:0;overflow:hidden}
 .ov-video-card{left:0;right:0;top:230px}.ov-video-card .vframe{width:960px;height:620px;border-radius:var(--radius);overflow:hidden;border:3px solid var(--glass-border);box-shadow:0 40px 100px rgba(0,0,0,.55)}
