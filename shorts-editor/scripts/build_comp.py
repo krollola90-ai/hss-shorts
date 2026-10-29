@@ -201,6 +201,16 @@ def overlay_js(k, o):
                   f'yoyo:true,repeat:1}},{s + 0.38:.3f});')
         js.append(f'tl.to("{child}",{{scale:0,opacity:0,duration:0.2,ease:"back.in(2)"}},{max(s, e - 0.2):.3f});')
         return js
+    if t == "stat" and o.get("countup"):
+        m = re.search(r"(\d+(?:[.,]\d+)?)", o["text"])
+        if m:
+            num = m.group(1); dec = len(num.split(",")[-1].split(".")[-1]) if re.search(r"[.,]", num) else 0
+            sep = "," if "," in num else "."
+            pre, post = o["text"][:m.start()], o["text"][m.end():]
+            val = float(num.replace(",", "."))
+            js.append(f'(function(){{var el=document.querySelector("{oid} .stat-num"),p={{v:0}};'
+                      f'tl.to(p,{{v:{val},duration:0.7,ease:"power2.out",onUpdate:function(){{'
+                      f'el.textContent={json.dumps(pre)}+p.v.toFixed({dec}).replace(".",{json.dumps(sep)})+{json.dumps(post)};}}}},{s});}})();')
     if t in ("badge", "stat"):
         js.append(f'tl.fromTo("{child}",{{scale:0.4,opacity:0,y:30}},'
                   f'{{scale:1,opacity:1,y:0,duration:0.32,ease:"back.out(2.2)"}},{s});')
@@ -253,6 +263,7 @@ backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 30px 
 font-size:86px;line-height:1.02;letter-spacing:-0.02em;text-transform:uppercase;padding:10px 26px;
 margin:6px 0;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
 #hook .line.alt{background:var(--hook-alt-bg);color:var(--hook-alt-ink)}
+.hemoji{height:1.05em;vertical-align:-0.18em;margin:0 .12em}
 %(cap_box_css)s
 .badge{display:flex;align-items:center;gap:26px;background:var(--glass);border:2px solid var(--glass-border);
 border-radius:999px;padding:18px 46px 18px 18px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
@@ -339,7 +350,16 @@ def main():
     body, js = [], []
     hook = plan.get("hook")
     if hook:
-        lines = "".join(f'<div><span class="line{" alt" if n % 2 else ""}">{esc(l)}</span></div>'
+        def hook_line(l):
+            out = []
+            for tok in re.findall(r"(?:[\U0001F000-\U0001FAFF\u2600-\u27BF][\uFE0F\u200D\U0001F000-\U0001FAFF\u2600-\u27BF]*)|[^\U0001F000-\U0001FAFF\u2600-\u27BF]+", l):
+                if re.match(r"[\U0001F000-\U0001FAFF\u2600-\u27BF]", tok):
+                    f = emoji_file(tok); (assets / "emoji").mkdir(exist_ok=True); shutil.copy2(f, assets / "emoji" / f.name)
+                    out.append(f'<img class="hemoji" src="assets/emoji/{f.name}" alt="">')
+                else:
+                    out.append(esc(tok))
+            return "".join(out)
+        lines = "".join(f'<div><span class="line{" alt" if n % 2 else ""}">{hook_line(l)}</span></div>'
                         for n, l in enumerate(hook["text"].split("\n")))
         body.append(f'<div id="hook" class="clip" data-start="{hook["start"]}" '
                     f'data-duration="{round(hook["end"] - hook["start"], 3)}">{lines}</div>')
@@ -356,6 +376,30 @@ def main():
     for z in zooms or []:
         js.append(f'tl.to("#cam",{{scale:{z["scale"]},duration:{zin},ease:"power3.out"}},{z["t"]});')
         cue(z["t"], z.get("sfx"))
+
+    # ---- auto emoji on keywords (style "emoji": {"auto": true} or plan "emoji_auto": true)
+    ecfg = dict(th.get("emoji", {}), **(plan.get("emoji") or {}))
+    if plan.get("emoji_auto", ecfg.get("auto", False)):
+        kwmap = load_json(ROOT / "assets" / "emoji-keywords.json")
+        busy = [(o["start"] - 0.2, o["end"] + 0.2) for o in plan.get("overlays", [])
+                if o["type"] in ("card", "list", "stat", "badge", "image", "video") and o.get("position", "top") == "top"]
+        if plan.get("hook"):
+            busy.append((plan["hook"]["start"], plan["hook"]["end"]))
+        last, auto = -99.0, []
+        for w in words:
+            lw = w["text"].lower().strip(".,!?:;«»\"'()")
+            ch = next((e for e, stems in kwmap.items() if any(lw.startswith(st.lower()) for st in stems)), None)
+            if not ch or w["start"] - last < ecfg.get("min_gap", 2.2):
+                continue
+            st, en = round(w["start"] - 0.05, 3), round(min(total, w["start"] + ecfg.get("hold", 1.8)), 3)
+            if any(a < en and st < b for a, b in busy):
+                continue
+            auto.append({"type": "emoji", "char": ch, "start": st, "end": en, "x": ecfg.get("x", 0.5),
+                         "y": ecfg.get("y", 0.2), "size": ecfg.get("size", 210), "rotate": 0,
+                         "sfx": ecfg.get("sfx", "pop")})
+            last = w["start"]
+        plan.setdefault("overlays", []).extend(auto)
+        log(f"auto emoji: {len(auto)}")
 
     # ---- overlays
     for k, o in enumerate(plan.get("overlays", [])):
@@ -422,6 +466,13 @@ def main():
                     js.append(f'tl.to("#w{w["i"]}",{{color:"var(--accent-ink)",backgroundColor:"var(--accent)",'
                               f'textShadow:"none",webkitTextStroke:"0px rgba(0,0,0,0)",duration:0.08,overwrite:"auto"}},{w["start"]:.3f});')
                     continue
+                if ccfg.get("active_style") == "plate":
+                    # active word sits on a solid accent plate (reference: q.level TikTok)
+                    js.append(f'tl.to("#w{w["i"]}",{{color:"var(--accent-ink)",backgroundColor:"var(--accent)",'
+                              f'duration:0.05,overwrite:"auto"}},{w["start"]:.3f});')
+                    js.append(f'tl.to("#w{w["i"]}",{{color:"var(--ink)",backgroundColor:"rgba(0,0,0,0)",'
+                              f'duration:0.05,overwrite:"auto"}},{w["end"]:.3f});')
+                    continue
                 big = ccfg["active_scale"] * (1.1 if w["i"] in emph else 1.0)
                 js.append(f'tl.to("#w{w["i"]}",{{color:"var(--accent)",scale:{big:.2f},duration:0.06,overwrite:"auto"}},{w["start"]:.3f});')
                 if w["i"] not in emph:
@@ -471,10 +522,13 @@ def main():
                      hook_alt_bg=th.get("hook", {}).get("alt_bg", "#fff"),
                      hook_alt_ink=th.get("hook", {}).get("alt_ink", c["accent_ink"]),
                      stat_color=c.get("stat", c["accent"]),
-                     cap_box_css=(".cg .cw{-webkit-text-stroke:0;text-shadow:none}"
-                                  ".cg{display:flex;justify-content:center}"
-                                  ".cg>.box{display:inline-block;background:%s;border-radius:22px;padding:10px 26px}"
-                                  % ccfg["box"]) if ccfg.get("box") else "", **c)
+                     cap_box_css=(("#hook .line,#hook .line.alt{background:none;color:#fff;box-shadow:none;"
+                                   "text-shadow:0 4px 18px rgba(0,0,0,.6),0 0 2px rgba(0,0,0,.8);font-size:74px}")
+                                  if th.get("hook", {}).get("style") == "plain" else "")
+                                 + ((".cg .cw{-webkit-text-stroke:0;text-shadow:none}"
+                                     ".cg{display:flex;justify-content:center}"
+                                     ".cg>.box{display:inline-block;background:%s;border-radius:22px;padding:10px 26px}"
+                                     % ccfg["box"]) if ccfg.get("box") else ""), **c)
     # per-video layout tweaks (edit_plan.json -> "layout"), for framings where the face sits high:
     #   overlay_top: y of top cards (default 230), card_scale: shrink cards/lists (default 1)
     lay = plan.get("layout") or {}
