@@ -91,10 +91,15 @@ WHISPER_PROMPTS = {
 
 def whisper(audio, language):
     from faster_whisper import WhisperModel  # imported lazily: optional dependency
-    model_name = env("WHISPER_MODEL", "small")
+    model_name = env("WHISPER_MODEL", "medium")  # medium: ~4% errors vs ~7% for small (tested on vac05)
     log(f"faster-whisper model={model_name} (first run downloads it from huggingface.co)")
     model = WhisperModel(model_name, device="cpu", compute_type="int8")
-    segs, info = model.transcribe(audio, language=language, word_timestamps=True,
+    # decode with ffmpeg ourselves: faster-whisper's PyAV path breaks on some av versions
+    import numpy as np
+    pcm = subprocess.run(["ffmpeg", "-v", "error", "-i", str(audio), "-ac", "1", "-ar", "16000",
+                          "-f", "f32le", "-"], capture_output=True, check=True).stdout
+    samples = np.frombuffer(pcm, dtype=np.float32)
+    segs, info = model.transcribe(samples, language=language, word_timestamps=True,
                                   vad_filter=False, beam_size=5,
                                   initial_prompt=WHISPER_PROMPTS.get(language or "en"),
                                   condition_on_previous_text=False)
