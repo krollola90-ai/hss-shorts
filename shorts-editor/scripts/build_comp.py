@@ -34,7 +34,7 @@ import sys
 from pathlib import Path
 
 from common import (FONTS_DIR, FPS, H, ROOT, SFX_DIR, VENDOR_DIR, W, db_to_gain, duration, load_json,
-                    log, theme)
+                    log, run, theme)
 
 esc = html.escape
 
@@ -152,6 +152,15 @@ def overlay_html(k, o):
                  f'style="object-position:{fx * 100:.0f}% {fy * 100:.0f}%;'
                  f'transform-origin:{fx * 100:.0f}% {fy * 100:.0f}%"></div>{cap}</div>')
         common = common.replace("ov pos-", f"ov ov-{layout} pos-")
+    elif t == "video":
+        # B-roll clip from Mark's sources (muted); layout "full" covers the speaker, "card" sits on top
+        layout = o.get("layout", "full")
+        cap = f'<div class="img-cap">{nl2br(o["caption"])}</div>' if o.get("caption") else ""
+        d = round(o["end"] - o["start"], 3)
+        return (f'<div id="{oid}" class="ov-video ov-video-{layout}" style="opacity:0"><div class="vframe">'
+                f'<video id="{oid}-v" class="clip" src="{esc(o["_asset"])}" data-start="{o["start"]}" '
+                f'data-duration="{d}" data-media-start="{o.get("from", 0)}" data-volume="0" muted></video>'
+                f'</div>{cap}</div>')
     elif t == "emoji":
         # floating emoji sticker; x/y = centre as a fraction of the frame, size in px
         x, y, size = o.get("x", 0.78), o.get("y", 0.30), o.get("size", 200)
@@ -179,6 +188,11 @@ def overlay_js(k, o):
     child = f"{oid} > *"
     js = []
     t = o["type"]
+    if t == "video":
+        js.append(f'tl.set("{oid}",{{opacity:1}},{s});')
+        js.append(f'tl.fromTo("{oid} .vframe",{{scale:1.08}},{{scale:1,duration:{e - s:.2f},ease:"none"}},{s});')
+        js.append(f'tl.to("{oid}",{{opacity:0,duration:0.15}},{max(s, e - 0.15):.3f});')
+        return js
     if t == "emoji":
         rot = o.get("rotate", -12)
         js.append(f'tl.fromTo("{child}",{{scale:0,rotation:{rot * 2},opacity:0}},'
@@ -227,6 +241,10 @@ html,body{width:%(W)dpx;height:%(H)dpx;overflow:hidden;background:#000}
 .ov>*{will-change:transform,opacity}
 .pos-top{top:230px}.pos-middle{top:720px}.pos-bottom{top:1000px}
 .ov-full{inset:0;top:0;z-index:5}
+.ov-video{position:absolute;z-index:6;display:flex;flex-direction:column;align-items:center}
+.ov-video-full{inset:0}.ov-video-full .vframe{position:absolute;inset:0;overflow:hidden}
+.ov-video-card{left:0;right:0;top:230px}.ov-video-card .vframe{width:960px;height:620px;border-radius:var(--radius);overflow:hidden;border:3px solid var(--glass-border);box-shadow:0 40px 100px rgba(0,0,0,.55)}
+.vframe video{width:100%%;height:100%%;object-fit:cover}
 .ov-emoji{position:absolute;z-index:15;pointer-events:none}.ov-emoji img{width:100%%;height:100%%;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
 .glass{background:var(--glass);border:2px solid var(--glass-border);border-radius:var(--radius);
 backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 30px 80px rgba(0,0,0,.45)}
@@ -346,6 +364,16 @@ def main():
             dst = assets / "broll" / src.name
             shutil.copy2(src, dst)
             o["_asset"] = f"assets/broll/{src.name}"
+        if o["type"] == "video":
+            src = (proj / o["src"]) if not Path(o["src"]).is_absolute() else Path(o["src"])
+            dst = assets / "broll" / (src.stem + "_hf.mp4")
+            if not dst.exists():  # seekable H.264, 30 fps, keyframe every second, no audio
+                run(["ffmpeg", "-y", "-v", "error", "-i", src, "-an",
+                     "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30"
+                     if o.get("layout", "full") == "full" else "scale=1280:-2,fps=30",
+                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p",
+                     "-g", "30", "-keyint_min", "30", dst])
+            o["_asset"] = f"assets/broll/{dst.name}"
         if o["type"] == "emoji":
             src = emoji_file(o["char"])
             (assets / "emoji").mkdir(exist_ok=True)
@@ -354,7 +382,7 @@ def main():
         body.append(overlay_html(k, o))
         js.extend(overlay_js(k, o))
         default = {"badge": "pop", "stat": "vine-boom", "card": "whoosh-medium", "list": "pop",
-                   "code": "typing", "image": "camera-shutter", "emoji": "pop"}[o["type"]]
+                   "code": "typing", "image": "camera-shutter", "emoji": "pop", "video": "whoosh-short"}[o["type"]]
         cue(o["start"], o.get("sfx", default))
         if o["type"] == "list":
             for n, it in enumerate(o.get("items", [])):

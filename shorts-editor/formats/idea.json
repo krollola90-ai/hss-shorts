@@ -15,5 +15,6 @@
   ],
   "overlays": "badge на каждый тезис, list для перечислений",
   "music": "upbeat",
-  "ending": "вопрос к зрителю"
+  "ending": "вопрос к зрителю",
+  "visuals": "brief"
 }

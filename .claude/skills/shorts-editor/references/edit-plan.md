@@ -53,3 +53,11 @@ All times are seconds on the CUT timeline (`work/cuts.json` → `words[].start/e
 — Twemoji SVG from `assets/emoji/` (any emoji), pops in with a bounce, floats, pops out (default SFX `pop`).
 `x`/`y` = centre as a fraction of the frame. Emojis may overlap cards (they're small); keep them off the
 face and away from captions. 1 emoji per 4–8 s on concrete nouns (money, house, box, bus, clock, ✅/❌).
+
+## Video B-roll
+
+`{"type": "video", "src": "broll/03-guitar.mp4", "start": 12.4, "end": 15.0, "layout": "full", "from": 1.5, "caption": "Мне 12, первая гитара"}`
+— a clip Mark supplied (muted; his voice continues). `layout`: `full` (covers the speaker — best for
+illustrating a story) or `card` (framed on top; only when the face sits low). `from` = seconds into
+the clip. Photos: the existing `image` type with `src: "broll/<file>.jpg"`, `layout: full|card`,
+slow Ken Burns zoom.

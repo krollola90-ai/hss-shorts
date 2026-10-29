@@ -2,6 +2,7 @@
 # shorts-editor CLI. Run from anywhere: shorts-editor/shorts <command> <project> [...]
 #   new <name> <raw> [format]   create projects/<name>/, 1080p working copy, audio; style from formats/<format>.json
 #   fetch <name> <drive-link> [format]  download a shared Google Drive video, then `new`
+#   asset <name> <drive-id> <f> download a visual (photo/video) Mark uploaded -> projects/<name>/broll/<f>
 #   import-scribe <name> <json> import an ElevenLabs Scribe words.json (from the connector)
 #   transcribe <name> [lang]    Scribe (or Whisper fallback) -> work/words.json
 #   cuts <name>                 plan cut points -> work/cuts.json (uses overrides.json if present)
@@ -17,7 +18,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 [ -f "$HERE/.env.sh" ] && . "$HERE/.env.sh"   # written by setup.sh (render browser, proxy)
 S="$HERE/scripts"
 cmd="${1:-}"; name="${2:-}"
-[ -z "$cmd" ] && { sed -n '2,16p' "$0"; exit 1; }
+[ -z "$cmd" ] && { sed -n '2,17p' "$0"; exit 1; }
 P="$HERE/projects/$name"
 raw() { python3 -c "import json;print(json.load(open('$P/project.json'))['raw'])"; }
 # each project pins its style: project.json -> "style": "styles/<name>.json"
@@ -52,6 +53,12 @@ case "$cmd" in
     ext="$(file -b --mime-type "$tmp" | grep -q quicktime && echo MOV || echo mp4)"
     mv "$tmp" "$HERE/footage/raw/$name.$ext"
     "$0" new "$name" "$HERE/footage/raw/$name.$ext" "${4:-vacancy}" ;;
+  asset)
+    # shorts asset <name> <drive-file-id-or-link> <file_name>  -> projects/<name>/broll/<file_name>
+    id="$(echo "$3" | grep -oE '/d/[A-Za-z0-9_-]+|id=[A-Za-z0-9_-]+' | head -1 | sed -E 's#^(/d/|id=)##')"; id="${id:-$3}"
+    mkdir -p "$P/broll"; curl -sSL -o "$P/broll/$4" "https://drive.usercontent.google.com/download?id=$id&export=download&confirm=t"
+    file "$P/broll/$4" | grep -qi html && { rm -f "$P/broll/$4"; echo "sign-in page: the visuals folder must be shared 'anyone with the link'"; exit 1; }
+    echo "asset -> $P/broll/$4 ($(file -b --mime-type "$P/broll/$4"))" ;;
   import-scribe)
     # shorts import-scribe <name> <scribe_words.json> [lang]  (transcript from the ElevenLabs connector)
     python3 "$S/transcribe.py" "$P/work/audio.mp3" "$P/work/words.json" --import-scribe "$3" ${4:+--language "$4"}

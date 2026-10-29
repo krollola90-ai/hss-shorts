@@ -35,6 +35,35 @@ save his choice into the preset (`"style"`, `"status": "approved"`), then commit
 
 Before cutting, read `shorts-editor/docs/voice.md` (how Mark talks, what to keep, what to cut).
 
+## 2b. Visual brief (formats with `"visuals": "brief"` — thoughts, motivation, about me, ideas, news, advice, answers, vlog)
+
+Mark's rule: for these videos **don't start editing right away**. First:
+
+1. Transcribe and read the whole text carefully. Work out the logic: what is the one idea, what is
+   the hook, which order makes it clearest, what to cut. Write the cleaned script (with the new
+   order) and the captions.
+2. Find every moment a picture would help the viewer understand: people he mentions (e.g. Michael
+   Jackson young), objects and places (a guitar, a city, a warehouse), events, abstract ideas
+   (alter ego → mirror/two faces), numbers. Aim for ~8–12 visuals per minute of final video.
+3. Send Mark a **visual brief** (SendUserMessage, a table) and stop until he answers:
+
+   | № | Момент (фраза) | Что нужно | Фото или видео | Имя файла |
+   |---|---|---|---|---|
+   | 1 | «…как Майкл Джексон…» | Майкл Джексон в молодости, на сцене | фото | 01-jackson.jpg |
+   | 2 | «…в детстве играл на гитаре…» | гитара; лучше твоё детское фото с гитарой | фото / видео 3–5 с | 02-guitar.jpg |
+
+   Mark finds the files himself (Claude never downloads photos of public figures from the web).
+   For each item also say what Claude will do if Mark has nothing: an emoji, a text card, an
+   icon — or, only with Mark's OK, an AI-generated illustration (ElevenLabs, costs credits).
+4. Create the folder `01_Входящие/<рубрика>/<project>_визуалы` with the Google Drive connector
+   (`create_file`, folder mime type, parent from `drive.json`) and tell Mark to upload there with
+   the file names from the table. The folder inherits the inbox's link sharing.
+5. When Mark says «скинул», list the folder (`search_files parentId = '<folder id>'`), download each
+   file with `shorts asset <project> <file id> <file name>`, and place them: photos → `image`
+   (`layout: full` for story moments, `card` for references), videos → `video` B-roll; time each one
+   to the exact word from `work/cuts.json`. Missing items → the fallback from the brief.
+6. Then continue with the normal edit and a draft preview.
+
 ## 3. Edit
 
 Follow `shorts-editor` SKILL.md steps 1–7 with these rules:
