@@ -1,0 +1,67 @@
+{
+  "title": "Мысль с картинкой сверху (по референсу MM2)",
+  "name": "mind-panel",
+  "font_family": "Inter",
+  "colors": {
+    "ink": "#FFFFFF",
+    "ink_dim": "rgba(255,255,255,0.72)",
+    "accent": "#FFFFFF",
+    "accent_ink": "#000000",
+    "glass": "rgba(12,12,14,0.62)",
+    "glass_border": "rgba(255,255,255,0.14)",
+    "scrim": "rgba(0,0,0,0.55)",
+    "stat": "#FFFFFF"
+  },
+  "radius": 36,
+  "safe": {
+    "top": 168,
+    "bottom": 1330,
+    "side": 54,
+    "right_rail": 140
+  },
+  "captions": {
+    "words_per_group": 6,
+    "max_group_gap": 0.15,
+    "font_size": 44,
+    "min_font_size": 38,
+    "weight": 700,
+    "uppercase": false,
+    "bottom_px": 520,
+    "stroke": "0 2px 8px rgba(0,0,0,0.7)",
+    "active_scale": 1.0,
+    "idle_color": "#FFFFFF"
+  },
+  "zoom": {
+    "auto": true,
+    "min_interval": 5,
+    "max_interval": 8,
+    "scales": [
+      1.04,
+      1.07
+    ],
+    "in_duration": 0.18
+  },
+  "audio": {
+    "voice_lufs": -14,
+    "true_peak": -1.0,
+    "music_db": -22,
+    "music_duck_db": -6,
+    "sfx_db": -9
+  },
+  "cuts": {
+    "max_pause": 0.3,
+    "keep_lead": 0.06,
+    "keep_tail": 0.1,
+    "crossfade": 0.012
+  },
+  "hook": {
+    "bg": "#FFFFFF",
+    "ink": "#0B0B0F",
+    "alt_bg": "#0B0B0F",
+    "alt_ink": "#FFFFFF",
+    "style": "plain"
+  },
+  "emoji": {
+    "auto": false
+  }
+}

@@ -147,11 +147,17 @@ def overlay_html(k, o):
         layout = o.get("layout", "card")
         cap = f'<div class="img-cap">{nl2br(o["caption"])}</div>' if o.get("caption") else ""
         fx, fy = o.get("focus", [0.5, 0.5])
+        num = f'<div class="bignum">{esc(str(o["number"]))}</div>' if o.get("number") is not None else ""
         inner = (f'<div class="shot shot-{layout}"><div class="shot-frame">'
                  f'<img id="{oid}-img" src="{esc(o["_asset"])}" '
                  f'style="object-position:{fx * 100:.0f}% {fy * 100:.0f}%;'
-                 f'transform-origin:{fx * 100:.0f}% {fy * 100:.0f}%"></div>{cap}</div>')
+                 f'transform-origin:{fx * 100:.0f}% {fy * 100:.0f}%">{num}</div>{cap}</div>')
         common = common.replace("ov pos-", f"ov ov-{layout} pos-")
+    elif t == "grid":
+        cells = "".join(f'<div class="gcell"><img id="{oid}-g{n}" src="{esc(a)}" alt=""></div>'
+                        for n, a in enumerate(o["_assets"]))
+        common = common.replace("ov pos-", "ov ov-full pos-")
+        inner = f'<div class="grid4">{cells}</div>'
     elif t == "video":
         # B-roll clip from Mark's sources (muted); layout "full" covers the speaker, "card" sits on top
         layout = o.get("layout", "full")
@@ -236,6 +242,9 @@ def overlay_js(k, o):
         type_dur = min(max(0.6, n * 0.025), (e - s) * 0.6)
         js.append(f'tl.fromTo("{oid}-code",{{clipPath:"inset(0 100% 0 0)"}},'
                   f'{{clipPath:"inset(0 0% 0 0)",duration:{type_dur:.2f},ease:"steps({min(n, 60)})"}},{s + 0.3});')
+    if t == "grid":
+        for n in range(len(o["_assets"])):
+            js.append(f'tl.fromTo("{oid}-g{n}",{{scale:1.25,opacity:0}},{{scale:1,opacity:1,duration:0.25,ease:"power2.out"}},{s + 0.08 * n:.3f});')
     if t == "image":
         z = o.get("zoom", 1.12)
         js.append(f'tl.fromTo("{oid}-img",{{scale:1}},{{scale:{z},duration:{e - s:.2f},ease:"none"}},{s});')
@@ -257,7 +266,7 @@ html,body{width:%(W)dpx;height:%(H)dpx;overflow:hidden;background:#000}
 .ov{position:absolute;left:0;right:0;z-index:10;display:flex;justify-content:center}
 .ov>*{will-change:transform,opacity}
 .pos-top{top:230px}.pos-middle{top:720px}.pos-bottom{top:1000px}
-.ov-full{inset:0;top:0;z-index:5}
+.ov-full{inset:0;top:0!important;z-index:5}.ov-full>.shot{position:absolute;inset:0}
 .ov-video{position:absolute;z-index:6;display:flex;flex-direction:column;align-items:center}
 .ov-video-full{inset:0}.ov-video-full .vframe{position:absolute;inset:0;overflow:hidden}
 .ov-video-card{left:0;right:0;top:230px}.ov-video-card .vframe{width:960px;height:620px;border-radius:var(--radius);overflow:hidden;border:3px solid var(--glass-border);box-shadow:0 40px 100px rgba(0,0,0,.55)}
@@ -298,6 +307,14 @@ white-space:pre-wrap;word-break:break-word;color:#e8e8f0}
 .shot-card .shot-frame{width:960px;height:720px;border-radius:var(--radius);overflow:hidden;
 border:3px solid var(--glass-border);box-shadow:0 40px 100px rgba(0,0,0,.55);background:#111}
 .shot-full .shot-frame{position:absolute;inset:0;background:#0b0b0f}
+.ov-top{top:0!important;z-index:6}.shot-top .shot-frame{width:1080px;height:640px;overflow:hidden;background:transparent;
+display:flex;align-items:center;justify-content:center;padding:40px 60px 0}
+.shot-top .shot-frame img{width:auto!important;height:100%%!important;max-width:100%%;object-fit:contain!important;
+box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.bignum{position:absolute;left:0;right:0;top:44%%;text-align:center;font-weight:900;font-size:260px;line-height:1;
+color:rgba(200,200,200,.82);text-shadow:0 10px 40px rgba(0,0,0,.6)}
+.grid4{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;background:#000}
+.gcell{overflow:hidden}.gcell img{width:100%%;height:100%%;object-fit:cover;display:block}
 .shot-frame img{width:100%%;height:100%%;object-fit:cover;display:block}
 .img-cap{margin-top:22px;font-weight:800;font-size:44px;background:var(--glass);padding:12px 26px;border-radius:16px}
 #captions{position:absolute;left:0;right:0;bottom:%(cap_bottom)dpx;z-index:20;height:0}
@@ -415,6 +432,12 @@ def main():
             dst = assets / "broll" / src.name
             shutil.copy2(src, dst)
             o["_asset"] = f"assets/broll/{src.name}"
+        if o["type"] == "grid":
+            o["_assets"] = []
+            for g in o["images"]:
+                src = (proj / g) if not Path(g).is_absolute() else Path(g)
+                shutil.copy2(src, assets / "broll" / src.name)
+                o["_assets"].append(f"assets/broll/{src.name}")
         if o["type"] == "video":
             src = (proj / o["src"]) if not Path(o["src"]).is_absolute() else Path(o["src"])
             dst = assets / "broll" / (src.stem + "_hf.mp4")
@@ -433,7 +456,8 @@ def main():
         body.append(overlay_html(k, o))
         js.extend(overlay_js(k, o))
         default = {"badge": "pop", "stat": "vine-boom", "card": "whoosh-medium", "list": "pop",
-                   "code": "typing", "image": "camera-shutter", "emoji": "pop", "video": "whoosh-short"}[o["type"]]
+                   "code": "typing", "image": "camera-shutter", "emoji": "pop", "video": "whoosh-short",
+                   "grid": "boom-deep"}[o["type"]]
         cue(o["start"], o.get("sfx", default))
         if o["type"] == "list":
             for n, it in enumerate(o.get("items", [])):
@@ -534,7 +558,7 @@ def main():
                                   if th.get("hook", {}).get("style") == "plain" else "")
                                  + ((".cg .cw{-webkit-text-stroke:0;text-shadow:none}"
                                      ".cg{display:flex;justify-content:center}"
-                                     ".cg>.box{display:inline-block;background:%s;border-radius:22px;padding:10px 26px}"
+                                     ".cg .box{display:inline-block;background:%s;border-radius:22px;padding:10px 26px}"
                                      % ccfg["box"]) if ccfg.get("box") else ""), **c)
     # per-video layout tweaks (edit_plan.json -> "layout"), for framings where the face sits high:
     #   overlay_top: y of top cards (default 230), card_scale: shrink cards/lists (default 1)
