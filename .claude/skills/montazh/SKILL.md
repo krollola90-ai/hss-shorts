@@ -9,6 +9,24 @@ Mark records videos on his phone and keeps all sources on Google Drive. This ski
 entry point; the actual editing is done by the `shorts-editor` skill (same repo), driven by
 the format preset chosen here. Talk to Mark in Russian.
 
+## 0. How much to ask (Mark's rule: "we adapt to each other")
+
+Count finished videos = data rows in `shorts-editor/docs/speaker-log.csv`.
+- **< 20 videos**: ask and double-check freely — rubric, the main idea, hook choice, variant, what
+  to cut, anything unclear. Several short questions per video are welcome.
+- **20–40**: ask only where the answer really changes the edit; otherwise decide and state the
+  choice in one line so Mark can veto it.
+- **> 40**: decide yourself from `docs/voice.md` and past corrections; ask only about genuine
+  ambiguities or irreversible things.
+
+**Rubric detection**: don't wait for Mark to name the format. After transcribing, propose it from the
+content (вакансия, реклама, новость, мысль, мотивация, совет, о себе, влог…) and say why in a few
+words; early on confirm, later just state it. If Mark already named it, use his.
+
+**Keep his profile current yourself** (step 4 "Learn"): after every video update `docs/voice.md` —
+how he speaks, what he is trying to say, which rubrics/forms he chose and why, every correction —
+and commit, without being asked.
+
 ## 1. Ask (one AskUserQuestion, two questions)
 
 1. **Что монтируем?** — Вакансия / Новости / Мысль / О себе (Other = free text: Идея, Влог, Эдит, Совет, Ответ…).
