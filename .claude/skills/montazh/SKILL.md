@@ -11,20 +11,29 @@ the format preset chosen here. Talk to Mark in Russian.
 
 ## 1. Ask (one AskUserQuestion, two questions)
 
-1. **Что монтируем?** — Вакансия / Мысль / Идея / Влог / Эдит (Other = free text).
-2. **Откуда видео?** — ссылка на Google Drive (Mark pastes it) / папка «01_Входящие» на Диске
-   (via the Google Drive connector, if connected) / файл на ноутбуке (linked computer folder).
+1. **Что монтируем?** — Вакансия / Новости / Мысль / О себе (Other = free text: Идея, Влог, Эдит, Совет, Ответ…).
+2. **Откуда видео?** — «новые во Входящих» (default) / ссылка на Google Drive / файл на ноутбуке.
+
+Inbox via the Google Drive connector: folder ids are in `shorts-editor/drive.json`
+(`inbox.<format>`). `search_files` with `parentId = '<id>' and mimeType contains 'video/'` lists new
+videos (a same-name .txt next to a video is Mark's note — read it). The connector can't move video
+bytes (base64 through the chat), so download with `shorts fetch <name> https://drive.google.com/file/d/<id>/view <format>`;
+this needs «01_Входящие» shared as "anyone with the link". If it returns a sign-in page, ask Mark to
+share the folder. Deliver finished videos with SendUserFile (and, if the laptop is linked and Google
+Drive for desktop is installed, write them into the synced «02_Готово» folder).
 
 If Mark already said the format or pasted a link, skip that question.
 
 ## 2. Load the preset
 
 `shorts-editor/formats/<format>.json` — style, target length, structure, overlay rules,
-music mood, ending. Format keys: vacancy, thought, idea, vlog, edit. Presets marked `"status": "draft"` have never been tested on a real video:
+music mood, ending. Format keys: vacancy, news, thought, idea, about, vlog, edit, advice, answer. Presets marked `"status": "draft"` have never been tested on a real video:
 before the first edit in that format, show Mark 3 style options on frames of his video
 (build the project with each candidate via `SHORTS_STYLE=$PWD/shorts-editor/styles/<s>.json shorts build`,
 snapshot 3 moments, stack into one image; catalogue of styles: `shorts-editor/docs/styles.md`) and
 save his choice into the preset (`"style"`, `"status": "approved"`), then commit.
+
+Before cutting, read `shorts-editor/docs/voice.md` (how Mark talks, what to keep, what to cut).
 
 ## 3. Edit
 

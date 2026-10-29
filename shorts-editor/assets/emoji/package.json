@@ -1,0 +1,14 @@
+{
+  "name": "@twemoji/svg",
+  "version": "15.0.0",
+  "description": "The latest optimized SVG files for jdecked's Twemoji.",
+  "author": "Samuel Kopp (https://samuelkopp.de)",
+  "license": "MIT",
+  "keywords": [
+    "twemoji",
+    "svg"
+  ],
+  "repository": "boywithkeyboard/twemoji_svg",
+  "bugs": "https://github.com/boywithkeyboard/twemoji_svg/issues",
+  "homepage": "https://github.com/boywithkeyboard/twemoji_svg#readme"
+}

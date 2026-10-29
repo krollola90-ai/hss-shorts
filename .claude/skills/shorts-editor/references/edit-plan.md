@@ -46,3 +46,10 @@ All times are seconds on the CUT timeline (`work/cuts.json` → `words[].start/e
 - A visual change every 2–4 s: zoom, overlay, or B-roll.
 - 1 overlay per 6–8 s, never two at once; leave 0.3 s between them.
 - SFX: one per visual event, at most ~1 per second overall. Big hits (`vine-boom`, `bass-drop`) 1–3 per video.
+
+## Emoji stickers
+
+`{"type": "emoji", "char": "💰", "start": 0.6, "end": 2.6, "x": 0.82, "y": 0.27, "size": 190, "rotate": -12}`
+— Twemoji SVG from `assets/emoji/` (any emoji), pops in with a bounce, floats, pops out (default SFX `pop`).
+`x`/`y` = centre as a fraction of the frame. Emojis may overlap cards (they're small); keep them off the
+face and away from captions. 1 emoji per 4–8 s on concrete nouns (money, house, box, bus, clock, ✅/❌).

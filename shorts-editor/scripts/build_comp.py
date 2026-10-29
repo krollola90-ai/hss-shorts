@@ -152,9 +152,26 @@ def overlay_html(k, o):
                  f'style="object-position:{fx * 100:.0f}% {fy * 100:.0f}%;'
                  f'transform-origin:{fx * 100:.0f}% {fy * 100:.0f}%"></div>{cap}</div>')
         common = common.replace("ov pos-", f"ov ov-{layout} pos-")
+    elif t == "emoji":
+        # floating emoji sticker; x/y = centre as a fraction of the frame, size in px
+        x, y, size = o.get("x", 0.78), o.get("y", 0.30), o.get("size", 200)
+        common = (f'id="{oid}" class="clip ov-emoji" data-start="{o["start"]}" '
+                  f'data-duration="{round(o["end"] - o["start"], 3)}" '
+                  f'style="left:{x * W - size / 2:.0f}px;top:{y * H - size / 2:.0f}px;width:{size}px;height:{size}px"')
+        inner = f'<img src="{esc(o["_asset"])}" alt="">'
     else:
         raise SystemExit(f"unknown overlay type: {t}")
     return f'<div {common}>{inner}</div>'
+
+
+def emoji_file(ch):
+    """Twemoji SVG for an emoji character (assets/emoji/<codepoints>.svg)."""
+    cps = [f"{ord(c):x}" for c in ch]
+    for cand in ("-".join(cps), "-".join(c for c in cps if c != "fe0f")):
+        f = ROOT / "assets" / "emoji" / f"{cand}.svg"
+        if f.exists():
+            return f
+    raise SystemExit(f"emoji not in assets/emoji: {ch!r} ({'-'.join(cps)})")
 
 
 def overlay_js(k, o):
@@ -162,6 +179,14 @@ def overlay_js(k, o):
     child = f"{oid} > *"
     js = []
     t = o["type"]
+    if t == "emoji":
+        rot = o.get("rotate", -12)
+        js.append(f'tl.fromTo("{child}",{{scale:0,rotation:{rot * 2},opacity:0}},'
+                  f'{{scale:1,rotation:{rot},opacity:1,duration:0.38,ease:"back.out(3)"}},{s});')
+        js.append(f'tl.to("{child}",{{y:-14,duration:{max(0.3, (e - s - 0.6) / 2):.2f},ease:"sine.inOut",'
+                  f'yoyo:true,repeat:1}},{s + 0.38:.3f});')
+        js.append(f'tl.to("{child}",{{scale:0,opacity:0,duration:0.2,ease:"back.in(2)"}},{max(s, e - 0.2):.3f});')
+        return js
     if t in ("badge", "stat"):
         js.append(f'tl.fromTo("{child}",{{scale:0.4,opacity:0,y:30}},'
                   f'{{scale:1,opacity:1,y:0,duration:0.32,ease:"back.out(2.2)"}},{s});')
@@ -202,6 +227,7 @@ html,body{width:%(W)dpx;height:%(H)dpx;overflow:hidden;background:#000}
 .ov>*{will-change:transform,opacity}
 .pos-top{top:230px}.pos-middle{top:720px}.pos-bottom{top:1000px}
 .ov-full{inset:0;top:0;z-index:5}
+.ov-emoji{position:absolute;z-index:15;pointer-events:none}.ov-emoji img{width:100%%;height:100%%;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
 .glass{background:var(--glass);border:2px solid var(--glass-border);border-radius:var(--radius);
 backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 30px 80px rgba(0,0,0,.45)}
 #hook{position:absolute;left:0;right:0;top:250px;z-index:12;text-align:center;padding:0 60px}
@@ -320,10 +346,15 @@ def main():
             dst = assets / "broll" / src.name
             shutil.copy2(src, dst)
             o["_asset"] = f"assets/broll/{src.name}"
+        if o["type"] == "emoji":
+            src = emoji_file(o["char"])
+            (assets / "emoji").mkdir(exist_ok=True)
+            shutil.copy2(src, assets / "emoji" / src.name)
+            o["_asset"] = f"assets/emoji/{src.name}"
         body.append(overlay_html(k, o))
         js.extend(overlay_js(k, o))
         default = {"badge": "pop", "stat": "vine-boom", "card": "whoosh-medium", "list": "pop",
-                   "code": "typing", "image": "camera-shutter"}[o["type"]]
+                   "code": "typing", "image": "camera-shutter", "emoji": "pop"}[o["type"]]
         cue(o["start"], o.get("sfx", default))
         if o["type"] == "list":
             for n, it in enumerate(o.get("items", [])):

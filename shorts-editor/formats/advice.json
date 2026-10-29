@@ -1,0 +1,19 @@
+{
+  "status": "draft",
+  "title": "Совет / Лайфхак",
+  "style": "styles/yellow-classic.json",
+  "target_seconds": [
+    20,
+    60
+  ],
+  "aspect": "9:16",
+  "intro_tag": "СОВЕТ",
+  "structure": [
+    "хук: проблема зрителя",
+    "решение по шагам (badge 1, 2, 3)",
+    "итог одной фразой"
+  ],
+  "overlays": "badge на каждый шаг; эмодзи ✅ ❌ на «можно/нельзя»",
+  "music": "upbeat",
+  "ending": "сохрани, чтобы не потерять"
+}
