@@ -1,0 +1,128 @@
+{
+  "hook": {
+    "text": "ОЗОРКОВ · ЛОДЗЬ\n31,40 ZŁ/ЧАС",
+    "start": 0.05,
+    "end": 2.9,
+    "sfx": "bass-drop-1"
+  },
+  "overlays": [
+    {
+      "type": "card",
+      "start": 4.4,
+      "end": 7.0,
+      "title": "Производство автоковриков",
+      "body": "Озорков",
+      "sfx": "whoosh-medium"
+    },
+    {
+      "type": "card",
+      "start": 7.3,
+      "end": 10.9,
+      "title": "Озорков",
+      "body": "возле Лодзи",
+      "sfx": "pop"
+    },
+    {
+      "type": "card",
+      "start": 11.2,
+      "end": 12.7,
+      "title": "Umowa zlecenie",
+      "body": "официальный договор",
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "card",
+      "start": 13.0,
+      "end": 17.3,
+      "title": "Только женщины",
+      "body": "от 18 до 55 лет",
+      "sfx": "pop"
+    },
+    {
+      "type": "card",
+      "start": 17.6,
+      "end": 20.4,
+      "title": "Польский язык",
+      "body": "на уровне общения",
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "stat",
+      "start": 20.71,
+      "end": 22.5,
+      "text": "31,40 zł",
+      "sub": "брутто в час",
+      "sfx": "bass-drop-2"
+    },
+    {
+      "type": "stat",
+      "start": 22.8,
+      "end": 24.9,
+      "text": "25,40 zł",
+      "sub": "нетто в час",
+      "sfx": "pop"
+    },
+    {
+      "type": "card",
+      "start": 25.2,
+      "end": 29.1,
+      "title": "Премии",
+      "body": "300–600 zł",
+      "sfx": "pop"
+    },
+    {
+      "type": "card",
+      "start": 29.4,
+      "end": 38.1,
+      "title": "Смены по 8–12 часов",
+      "body": "220+ часов в месяц",
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "list",
+      "start": 38.4,
+      "end": 48.7,
+      "title": "Условия:",
+      "items": [
+        [
+          "Жильё 600 zł/мес",
+          38.84
+        ],
+        [
+          "Дорога — самостоятельно",
+          42.88
+        ],
+        [
+          "Одежда и обувь бесплатно",
+          45.63
+        ]
+      ],
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "card",
+      "start": 49.0,
+      "end": 51.0,
+      "title": "Вся контактная информация",
+      "body": "в профиле",
+      "sfx": "whoosh-medium"
+    }
+  ],
+  "music": null,
+  "layout": {
+    "overlay_top": 175,
+    "card_scale": 0.82
+  },
+  "captions": {
+    "enabled": true,
+    "emphasis": [
+      97,
+      104,
+      115,
+      117,
+      133,
+      144,
+      174
+    ]
+  }
+}

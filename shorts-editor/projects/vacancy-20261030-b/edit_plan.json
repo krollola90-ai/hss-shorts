@@ -1,0 +1,139 @@
+{
+  "hook": {
+    "text": "SHEIN · ВРОЦЛАВ\n35 ZŁ/ЧАС",
+    "start": 0.05,
+    "end": 2.9,
+    "sfx": "bass-drop-1"
+  },
+  "overlays": [
+    {
+      "type": "card",
+      "start": 5.8,
+      "end": 8.4,
+      "title": "Склад одежды SHEIN",
+      "body": "Вроцлав",
+      "sfx": "whoosh-medium"
+    },
+    {
+      "type": "card",
+      "start": 8.7,
+      "end": 10.2,
+      "title": "Umowa zlecenie",
+      "body": "официальный договор",
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "card",
+      "start": 10.5,
+      "end": 15.7,
+      "title": "Мужчины, женщины, пары",
+      "body": "от 18 до 55 лет",
+      "sfx": "pop"
+    },
+    {
+      "type": "card",
+      "start": 16.0,
+      "end": 22.9,
+      "title": "ul. Logistyczna 1A",
+      "body": "Kąty Wrocławskie",
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "card",
+      "start": 23.2,
+      "end": 26.8,
+      "title": "С 1 октября",
+      "body": "повышенная ставка",
+      "sfx": "pop"
+    },
+    {
+      "type": "stat",
+      "start": 27.1,
+      "end": 29.7,
+      "text": "35 zł",
+      "sub": "брутто в час",
+      "sfx": "bass-drop-2"
+    },
+    {
+      "type": "stat",
+      "start": 30.0,
+      "end": 34.0,
+      "text": "28,20 zł",
+      "sub": "нетто в час",
+      "sfx": "pop"
+    },
+    {
+      "type": "card",
+      "start": 34.3,
+      "end": 38.9,
+      "title": "Студентам",
+      "body": "отличная подработка",
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "card",
+      "start": 39.2,
+      "end": 42.8,
+      "title": "200+ часов",
+      "body": "можно наработать",
+      "sfx": "pop"
+    },
+    {
+      "type": "card",
+      "start": 43.1,
+      "end": 47.2,
+      "title": "Работа стоя",
+      "body": "много ходить",
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "card",
+      "start": 47.5,
+      "end": 52.2,
+      "title": "График 5/2",
+      "body": "пн–пт · 10–11 часов в день",
+      "sfx": "pop"
+    },
+    {
+      "type": "list",
+      "start": 52.5,
+      "end": 62.8,
+      "title": "Условия:",
+      "items": [
+        [
+          "Жильё 700 zł/мес",
+          52.5
+        ],
+        [
+          "Транспорт до работы бесплатно",
+          57.8
+        ]
+      ],
+      "sfx": "whoosh-short"
+    },
+    {
+      "type": "card",
+      "start": 63.1,
+      "end": 66.5,
+      "title": "Вся контактная информация",
+      "body": "в профиле",
+      "sfx": "whoosh-medium"
+    }
+  ],
+  "music": null,
+  "layout": {
+    "overlay_top": 175,
+    "card_scale": 0.82
+  },
+  "captions": {
+    "enabled": true,
+    "emphasis": [
+      98,
+      106,
+      141,
+      202,
+      210,
+      222
+    ]
+  }
+}
