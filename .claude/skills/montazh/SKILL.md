@@ -113,7 +113,16 @@ Follow `shorts-editor` SKILL.md steps 1–7 with these rules:
 - Project name: `<format>-<YYYYMMDD>-<short-topic>` (e.g. `vacancy-20261029-temu-strykow`).
 - Intake: `shorts fetch <name> <drive-link> <format>` (or `shorts new <name> <file> <format>`) — it
   writes the preset's style into `project.json`. Mark may ask for another style: edit `"style"` there.
-- Language: transcribe with ElevenLabs while credits last; otherwise Whisper medium (free).
+- Language: **always ElevenLabs Scribe** (Mark's rule after 30.10: Whisper quality was not acceptable —
+  wrong Polish names, numbers, hallucinated last line). Whisper only if Mark explicitly agrees.
+  If the connector's upload tools are missing, `creative_attach_reference_file` needs a direct public
+  https URL: a 1 GB video from Drive times out, so give it a small mono mp3 of `work/audio.mp3`.
+  Scribe writes numbers as words — merge them into digits (31,40 / 8–12 / 200+) before cutting.
+- **Style: always show Mark 4–5 styles on frames of his own video and let him choose before editing**
+  (even for approved formats — he wants the choice every time; build a sheet with `SHORTS_STYLE=… shorts build`
+  + `shorts snap`, labelled 1–5).
+- Overlay/emoji times: compute from `work/cuts.json` anchor words in a script, never by hand —
+  after any re-cut the timeline shifts.
 - Story order follows the preset's `structure`; keep every fact, drop fillers/retakes/off-camera talk.
 - Ending: preset's `ending` text unless Mark says otherwise.
 - Checkpoint: show a draft preview (or, for a format already approved and a straightforward

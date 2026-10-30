@@ -1,1 +1,7 @@
-{"name": "vacancy-20261030-a", "format": "vacancy", "style": "styles/white-minimal-fast.json", "raw": "footage/raw/vacancy-20261030-a_1080.mp4", "source": "footage/raw/vacancy-20261030-a.MOV"}
+{
+  "name": "vacancy-20261030-a",
+  "format": "vacancy",
+  "style": "styles/emoji-story.json",
+  "raw": "footage/raw/vacancy-20261030-a_1080.mp4",
+  "source": "footage/raw/vacancy-20261030-a.MOV"
+}

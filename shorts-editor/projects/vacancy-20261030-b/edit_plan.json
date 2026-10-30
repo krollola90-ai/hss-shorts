@@ -1,126 +1,142 @@
 {
   "hook": {
-    "text": "SHEIN · ВРОЦЛАВ\n35 ZŁ/ЧАС",
+    "text": "SHEIN · ВРОЦЛАВ 👕\n35 ZŁ/ЧАС 💰",
     "start": 0.05,
-    "end": 2.9,
+    "end": 2.8,
     "sfx": "bass-drop-1"
   },
   "overlays": [
     {
       "type": "card",
-      "start": 5.8,
-      "end": 8.4,
       "title": "Склад одежды SHEIN",
       "body": "Вроцлав",
-      "sfx": "whoosh-medium"
+      "sfx": "whoosh-medium",
+      "start": 5.73,
+      "end": 6.87
     },
     {
-      "type": "card",
-      "start": 8.7,
-      "end": 10.2,
-      "title": "Umowa zlecenie",
-      "body": "официальный договор",
-      "sfx": "whoosh-short"
+      "type": "emoji",
+      "char": "📝",
+      "start": 7.78,
+      "end": 9.38,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
+      "sfx": "pop"
     },
     {
-      "type": "card",
-      "start": 10.5,
-      "end": 15.7,
-      "title": "Мужчины, женщины, пары",
-      "body": "от 18 до 55 лет",
+      "type": "emoji",
+      "char": "👫",
+      "start": 9.86,
+      "end": 11.46,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
       "sfx": "pop"
     },
     {
       "type": "card",
-      "start": 16.0,
-      "end": 22.9,
       "title": "ul. Logistyczna 1A",
       "body": "Kąty Wrocławskie",
-      "sfx": "whoosh-short"
+      "sfx": "whoosh-short",
+      "start": 16.65,
+      "end": 19.14
     },
     {
-      "type": "card",
-      "start": 23.2,
-      "end": 26.8,
-      "title": "С 1 октября",
-      "body": "повышенная ставка",
+      "type": "emoji",
+      "char": "📅",
+      "start": 20.01,
+      "end": 21.61,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
       "sfx": "pop"
     },
     {
       "type": "stat",
-      "start": 27.1,
-      "end": 29.7,
       "text": "35 zł",
       "sub": "брутто в час",
-      "sfx": "bass-drop-2"
+      "countup": true,
+      "sfx": "bass-drop-2",
+      "start": 23.82,
+      "end": 25.58
     },
     {
       "type": "stat",
-      "start": 30.0,
-      "end": 34.0,
       "text": "28,20 zł",
       "sub": "нетто в час",
+      "countup": true,
+      "sfx": "pop",
+      "start": 26.53,
+      "end": 30.81
+    },
+    {
+      "type": "emoji",
+      "char": "🎓",
+      "start": 31.29,
+      "end": 32.89,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
+      "sfx": "pop"
+    },
+    {
+      "type": "stat",
+      "text": "200+",
+      "sub": "часов",
+      "sfx": "pop",
+      "start": 39.49,
+      "end": 42.11
+    },
+    {
+      "type": "emoji",
+      "char": "🚶",
+      "start": 44.56,
+      "end": 46.16,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
       "sfx": "pop"
     },
     {
       "type": "card",
-      "start": 34.3,
-      "end": 38.9,
-      "title": "Студентам",
-      "body": "отличная подработка",
-      "sfx": "whoosh-short"
-    },
-    {
-      "type": "card",
-      "start": 39.2,
-      "end": 42.8,
-      "title": "200+ часов",
-      "body": "можно наработать",
-      "sfx": "pop"
-    },
-    {
-      "type": "card",
-      "start": 43.1,
-      "end": 47.2,
-      "title": "Работа стоя",
-      "body": "много ходить",
-      "sfx": "whoosh-short"
-    },
-    {
-      "type": "card",
-      "start": 47.5,
-      "end": 52.2,
       "title": "График 5/2",
-      "body": "пн–пт · 10–11 часов в день",
+      "body": "пн–пт · 10–11 часов",
+      "sfx": "whoosh-short",
+      "start": 46.76,
+      "end": 51.57
+    },
+    {
+      "type": "emoji",
+      "char": "🏠",
+      "start": 52.19,
+      "end": 53.79,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
       "sfx": "pop"
     },
     {
-      "type": "list",
-      "start": 52.5,
-      "end": 62.8,
-      "title": "Условия:",
-      "items": [
-        [
-          "Жильё 700 zł/мес",
-          52.5
-        ],
-        [
-          "Транспорт до работы бесплатно",
-          57.8
-        ]
-      ],
-      "sfx": "whoosh-short"
+      "type": "emoji",
+      "char": "🚌",
+      "start": 56.99,
+      "end": 58.59,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
+      "sfx": "pop"
     },
     {
       "type": "card",
-      "start": 63.1,
-      "end": 66.5,
       "title": "Вся контактная информация",
       "body": "в профиле",
-      "sfx": "whoosh-medium"
+      "sfx": "whoosh-medium",
+      "start": 60.67,
+      "end": 64.85
     }
   ],
   "music": null,
+  "emoji_auto": false,
   "layout": {
     "overlay_top": 175,
     "card_scale": 0.82
@@ -128,12 +144,14 @@
   "captions": {
     "enabled": true,
     "emphasis": [
-      98,
-      106,
-      141,
-      202,
-      210,
-      222
+      60,
+      62,
+      102,
+      110,
+      147,
+      217,
+      225,
+      238
     ]
   }
 }

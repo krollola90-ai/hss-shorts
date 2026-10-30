@@ -1,114 +1,134 @@
 {
   "hook": {
-    "text": "ОЗОРКОВ · ЛОДЗЬ\n31,40 ZŁ/ЧАС",
+    "text": "ОЗОРКОВ · ЛОДЗЬ 🏭\n31,40 ZŁ/ЧАС 💰",
     "start": 0.05,
-    "end": 2.9,
+    "end": 2.8,
     "sfx": "bass-drop-1"
   },
   "overlays": [
     {
       "type": "card",
-      "start": 4.4,
-      "end": 7.0,
       "title": "Производство автоковриков",
-      "body": "Озорков",
-      "sfx": "whoosh-medium"
+      "body": "Озорков · возле Лодзи",
+      "sfx": "whoosh-medium",
+      "start": 3.73,
+      "end": 6.31
     },
     {
-      "type": "card",
-      "start": 7.3,
-      "end": 10.9,
-      "title": "Озорков",
-      "body": "возле Лодзи",
+      "type": "emoji",
+      "char": "📝",
+      "start": 10.85,
+      "end": 12.45,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
       "sfx": "pop"
     },
     {
-      "type": "card",
-      "start": 11.2,
-      "end": 12.7,
-      "title": "Umowa zlecenie",
-      "body": "официальный договор",
-      "sfx": "whoosh-short"
-    },
-    {
-      "type": "card",
-      "start": 13.0,
-      "end": 17.3,
-      "title": "Только женщины",
-      "body": "от 18 до 55 лет",
+      "type": "emoji",
+      "char": "👩",
+      "start": 13.45,
+      "end": 15.05,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
       "sfx": "pop"
     },
     {
-      "type": "card",
-      "start": 17.6,
-      "end": 20.4,
-      "title": "Польский язык",
-      "body": "на уровне общения",
-      "sfx": "whoosh-short"
+      "type": "emoji",
+      "char": "🇵🇱",
+      "start": 16.35,
+      "end": 17.95,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
+      "sfx": "pop"
     },
     {
       "type": "stat",
-      "start": 20.71,
-      "end": 22.5,
       "text": "31,40 zł",
       "sub": "брутто в час",
-      "sfx": "bass-drop-2"
+      "countup": true,
+      "sfx": "bass-drop-2",
+      "start": 22.29,
+      "end": 23.99
     },
     {
       "type": "stat",
-      "start": 22.8,
-      "end": 24.9,
       "text": "25,40 zł",
       "sub": "нетто в час",
-      "sfx": "pop"
+      "countup": true,
+      "sfx": "pop",
+      "start": 24.65,
+      "end": 26.47
     },
     {
       "type": "card",
-      "start": 25.2,
-      "end": 29.1,
       "title": "Премии",
       "body": "300–600 zł",
+      "sfx": "pop",
+      "start": 27.11,
+      "end": 29.97
+    },
+    {
+      "type": "emoji",
+      "char": "🕐",
+      "start": 32.71,
+      "end": 34.31,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
+      "sfx": "pop"
+    },
+    {
+      "type": "stat",
+      "text": "220+",
+      "sub": "часов в месяц",
+      "sfx": "pop",
+      "start": 37.2,
+      "end": 38.7
+    },
+    {
+      "type": "emoji",
+      "char": "💸",
+      "start": 41.03,
+      "end": 42.63,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
+      "sfx": "pop"
+    },
+    {
+      "type": "emoji",
+      "char": "🏠",
+      "start": 43.38,
+      "end": 44.98,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
+      "sfx": "pop"
+    },
+    {
+      "type": "emoji",
+      "char": "🚗",
+      "start": 46.77,
+      "end": 48.37,
+      "x": 0.5,
+      "y": 0.19,
+      "size": 210,
       "sfx": "pop"
     },
     {
       "type": "card",
-      "start": 29.4,
-      "end": 38.1,
-      "title": "Смены по 8–12 часов",
-      "body": "220+ часов в месяц",
-      "sfx": "whoosh-short"
-    },
-    {
-      "type": "list",
-      "start": 38.4,
-      "end": 48.7,
-      "title": "Условия:",
-      "items": [
-        [
-          "Жильё 600 zł/мес",
-          38.84
-        ],
-        [
-          "Дорога — самостоятельно",
-          42.88
-        ],
-        [
-          "Одежда и обувь бесплатно",
-          45.63
-        ]
-      ],
-      "sfx": "whoosh-short"
-    },
-    {
-      "type": "card",
-      "start": 49.0,
-      "end": 51.0,
       "title": "Вся контактная информация",
       "body": "в профиле",
-      "sfx": "whoosh-medium"
+      "sfx": "whoosh-medium",
+      "start": 51.74,
+      "end": 53.88
     }
   ],
   "music": null,
+  "emoji_auto": false,
   "layout": {
     "overlay_top": 175,
     "card_scale": 0.82
@@ -116,13 +136,15 @@
   "captions": {
     "enabled": true,
     "emphasis": [
-      97,
-      104,
-      115,
-      117,
-      133,
-      144,
-      174
+      62,
+      64,
+      98,
+      105,
+      119,
+      121,
+      138,
+      150,
+      180
     ]
   }
 }

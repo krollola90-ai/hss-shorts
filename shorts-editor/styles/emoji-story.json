@@ -58,10 +58,9 @@
     "crossfade": 0.012
   },
   "hook": {
-    "style": "plain",
-    "bg": "transparent",
+    "bg": "rgba(12,10,20,0.88)",
     "ink": "#FFFFFF",
-    "alt_bg": "transparent",
+    "alt_bg": "#6B21F2",
     "alt_ink": "#FFFFFF"
   },
   "emoji": {
